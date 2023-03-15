@@ -1,2209 +1,583 @@
-@prefix : <http://www.semanticweb.org/wahl/ontologies/2022/1/polymer> .
+@prefix : <urn:webprotege:ontology:f1a0ee8e-a0a2-44a4-a388-1db9cdb28cf4#> .
 @prefix owl: <http://www.w3.org/2002/07/owl#> .
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix xml: <http://www.w3.org/XML/1998/namespace> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
-@base <http://www.semanticweb.org/wahl/ontologies/2022/1/polymer> .
+@base <urn:webprotege:ontology:f1a0ee8e-a0a2-44a4-a388-1db9cdb28cf4> .
 
-<http://www.semanticweb.org/wahl/ontologies/2022/1/polymer> rdf:type owl:Ontology .
-
-#################################################################
-#    Annotation properties
-#################################################################
-
-###  http://www.semanticweb.org/wahl/ontologies/2022/1/polymer#polymerSymbol
-:polymerSymbol rdf:type owl:AnnotationProperty ;
-               rdfs:comment "The abbreviation of a polymer name."@en .
-
-
-###  http://www.w3.org/2004/02/skos/core#altLabel
-<http://www.w3.org/2004/02/skos/core#altLabel> rdf:type owl:AnnotationProperty .
-
-
-###  http://www.w3.org/2004/02/skos/core#prefLabel
-<http://www.w3.org/2004/02/skos/core#prefLabel> rdf:type owl:AnnotationProperty .
-
+<urn:webprotege:ontology:f1a0ee8e-a0a2-44a4-a388-1db9cdb28cf4> rdf:type owl:Ontology .
 
 #################################################################
 #    Object Properties
 #################################################################
 
-###  http://www.semanticweb.org/wahl/ontologies/2022/1/polymer#belongsTo
-:belongsTo rdf:type owl:ObjectProperty ;
-           rdfs:subPropertyOf :created ;
-           owl:inverseOf :consistsOf ;
-           rdf:type owl:FunctionalProperty ;
-           rdfs:domain :Polymer ;
-           rdfs:range :PolymerGroup .
+###  http://wue.plastikg.de/has_attribute
+<http://wue.plastikg.de/has_attribute> rdf:type owl:ObjectProperty ;
+                                       rdfs:domain <http://wue.plastikg.de/Polymer> ;
+                                       rdfs:range <http://wue.plastikg.de/Attribute> ;
+                                       rdfs:label "has_attribute" .
 
 
-###  http://www.semanticweb.org/wahl/ontologies/2022/1/polymer#consistsOf
-:consistsOf rdf:type owl:ObjectProperty ;
-            rdfs:subPropertyOf owl:topObjectProperty ;
-            rdfs:domain :PolymerGroup ;
-            rdfs:range :Polymer .
+###  http://wue.plastikg.de/has_property
+<http://wue.plastikg.de/has_property> rdf:type owl:ObjectProperty ;
+                                      rdfs:domain <http://wue.plastikg.de/Attribute> ;
+                                      rdfs:range <http://wue.plastikg.de/Property> ;
+                                      rdfs:label "has_property" .
 
 
-###  http://www.semanticweb.org/wahl/ontologies/2022/1/polymer#conversion
-:conversion rdf:type owl:ObjectProperty ;
-            rdfs:domain :Unit ;
-            rdfs:range :Unit .
+###  http://wue.plastikg.de/has_standard
+<http://wue.plastikg.de/has_standard> rdf:type owl:ObjectProperty ;
+                                      rdfs:domain <http://wue.plastikg.de/Attribute> ;
+                                      rdfs:range <http://wue.plastikg.de/Standard> ;
+                                      rdfs:label "has_standard" .
 
 
-###  http://www.semanticweb.org/wahl/ontologies/2022/1/polymer#created
-:created rdf:type owl:ObjectProperty ;
-         rdfs:domain :Polymer ;
-         rdfs:comment "A Polymer is created" .
+###  http://wue.plastikg.de/has_unit
+<http://wue.plastikg.de/has_unit> rdf:type owl:ObjectProperty ;
+                                  rdfs:domain <http://wue.plastikg.de/Attribute> ;
+                                  rdfs:range <http://wue.plastikg.de/Unit> ;
+                                  rdfs:label "has_unit" .
 
 
-###  http://www.semanticweb.org/wahl/ontologies/2022/1/polymer#createdBy
-:createdBy rdf:type owl:ObjectProperty ;
-           rdfs:subPropertyOf :created ;
-           rdf:type owl:FunctionalProperty ;
-           rdfs:domain :Polymer ;
-           rdfs:range :Company ;
-           rdfs:comment "A polymer is created by one company."@en .
+###  http://wue.plastikg.de/has_value_type
+<http://wue.plastikg.de/has_value_type> rdf:type owl:ObjectProperty ;
+                                        rdfs:subPropertyOf owl:topObjectProperty ;
+                                        rdfs:domain <http://wue.plastikg.de/Attribute> ;
+                                        rdfs:range <http://wue.plastikg.de/Value_Type> ;
+                                        rdfs:label "has_value_type" .
 
 
-###  http://www.semanticweb.org/wahl/ontologies/2022/1/polymer#createdUsing
-:createdUsing rdf:type owl:ObjectProperty ;
-              rdfs:subPropertyOf :created ;
-              rdf:type owl:FunctionalProperty ;
-              rdfs:domain :Polymer ;
-              rdfs:range :FormationProcess ;
-              rdfs:comment "A polymer is created by one formation process."@en .
+###  http://wue.plastikg.de/issued_by
+<http://wue.plastikg.de/issued_by> rdf:type owl:ObjectProperty ;
+                                   rdfs:subPropertyOf owl:topObjectProperty ;
+                                   rdfs:domain <http://wue.plastikg.de/Standard> ;
+                                   rdfs:label "issued_by" .
 
 
-###  http://www.semanticweb.org/wahl/ontologies/2022/1/polymer#defines
-:defines rdf:type owl:ObjectProperty ;
-         rdfs:domain :Standard ;
-         rdfs:range :Unit ;
-         rdfs:comment "A standard defines the testing of an attribute with a specific set of units."@en .
-
-
-###  http://www.semanticweb.org/wahl/ontologies/2022/1/polymer#divideBy100
-:divideBy100 rdf:type owl:ObjectProperty ;
-             rdfs:subPropertyOf :conversion ;
-             owl:inverseOf :times100 ;
-             rdfs:domain :Unit ;
-             rdfs:range :Unit .
-
-
-###  http://www.semanticweb.org/wahl/ontologies/2022/1/polymer#hasProperty
-:hasProperty rdf:type owl:ObjectProperty ;
-             rdfs:subPropertyOf :created ;
-             owl:inverseOf :measures ;
-             rdfs:domain :Polymer ;
-             rdfs:range :Attribute .
-
-
-###  http://www.semanticweb.org/wahl/ontologies/2022/1/polymer#includes
-:includes rdf:type owl:ObjectProperty ;
-          rdfs:subPropertyOf :created ;
-          rdfs:domain :Polymer ;
-          rdfs:range :Additive ;
-          rdfs:comment "A polymer can include several additives."@en .
-
-
-###  http://www.semanticweb.org/wahl/ontologies/2022/1/polymer#influences
-:influences rdf:type owl:ObjectProperty ;
-            rdfs:subPropertyOf owl:topObjectProperty ;
-            rdfs:domain :Additive .
-
-
-###  http://www.semanticweb.org/wahl/ontologies/2022/1/polymer#influencesPolymer
-:influencesPolymer rdf:type owl:ObjectProperty ;
-                   rdfs:subPropertyOf :influences ;
-                   rdfs:domain :Additive ;
-                   rdfs:range :Polymer .
-
-
-###  http://www.semanticweb.org/wahl/ontologies/2022/1/polymer#influencesProperty
-:influencesProperty rdf:type owl:ObjectProperty ;
-                    rdfs:subPropertyOf :influences ;
-                    rdfs:domain :Additive ;
-                    rdfs:range :Attribute .
-
-
-###  http://www.semanticweb.org/wahl/ontologies/2022/1/polymer#isSuitableFor
-:isSuitableFor rdf:type owl:ObjectProperty ;
-               rdfs:subPropertyOf :created ;
-               rdfs:domain :Polymer ;
-               rdfs:range :Application ;
-               owl:propertyChainAxiom ( :requires
-                                      ) .
-
-
-###  http://www.semanticweb.org/wahl/ontologies/2022/1/polymer#measuredIn
-:measuredIn rdf:type owl:ObjectProperty ;
-            rdfs:domain :Attribute ;
-            rdfs:range :Unit ;
-            rdfs:comment "One attribute is measured in one unit."@en .
-
-
-###  http://www.semanticweb.org/wahl/ontologies/2022/1/polymer#measures
-:measures rdf:type owl:ObjectProperty ;
-          rdfs:domain :Attribute ;
-          rdfs:range :Polymer ;
-          rdfs:comment "An attribute can measure a polymer."@en .
-
-
-###  http://www.semanticweb.org/wahl/ontologies/2022/1/polymer#neededFor
-:neededFor rdf:type owl:ObjectProperty ;
-           rdfs:domain :ApplicationRequirements ;
-           rdfs:range :Application .
-
-
-###  http://www.semanticweb.org/wahl/ontologies/2022/1/polymer#requires
-:requires rdf:type owl:ObjectProperty ;
-          rdfs:domain :Application ;
-          rdfs:range :Standard ;
-          rdfs:comment "A polymer is suitable for an application, if it was successfully tested by a certain set of standards."@en .
-
-
-###  http://www.semanticweb.org/wahl/ontologies/2022/1/polymer#satisfies
-:satisfies rdf:type owl:ObjectProperty ;
-           rdfs:subPropertyOf :created ;
-           rdfs:domain :Polymer ;
-           rdfs:range :ApplicationRequirements ;
-           rdfs:comment "A polymer can satisfy several application requirements."@en .
-
-
-###  http://www.semanticweb.org/wahl/ontologies/2022/1/polymer#testedBy
-:testedBy rdf:type owl:ObjectProperty ;
-          owl:inverseOf :tests ;
-          rdfs:domain :Attribute ;
-          rdfs:range :Standard ;
-          rdfs:comment "One attribute may be testable by more than one standard."@en .
-
-
-###  http://www.semanticweb.org/wahl/ontologies/2022/1/polymer#tests
-:tests rdf:type owl:ObjectProperty ,
-                owl:FunctionalProperty ;
-       rdfs:domain :Standard ;
-       rdfs:range :Attribute ;
-       rdfs:comment "Standard tests an attribute according to different criteria."@en .
-
-
-###  http://www.semanticweb.org/wahl/ontologies/2022/1/polymer#times100
-:times100 rdf:type owl:ObjectProperty ;
-          rdfs:subPropertyOf :conversion ;
-          rdfs:domain :Unit ;
-          rdfs:range :Unit .
-
-
-###  http://www.semanticweb.org/wahl/ontologies/2022/1/polymer#typicallyUsedIn
-:typicallyUsedIn rdf:type owl:ObjectProperty ;
-                 rdfs:subPropertyOf :created ;
-                 rdfs:domain :Polymer ;
-                 rdfs:range :Application .
+###  http://wue.plastikg.de/produced_by
+<http://wue.plastikg.de/produced_by> rdf:type owl:ObjectProperty ;
+                                     rdfs:domain <http://wue.plastikg.de/Polymer> ;
+                                     rdfs:range <http://wue.plastikg.de/Company> ;
+                                     rdfs:label "produced_by" .
 
 
 #################################################################
 #    Data properties
 #################################################################
 
-###  http://www.semanticweb.org/wahl/ontologies/2022/1/polymer#createdOnDate
-:createdOnDate rdf:type owl:DatatypeProperty ;
-               rdfs:domain :Polymer ;
-               rdfs:range xsd:dateTime .
+###  http://wue.plastikg.de/abbreviation
+<http://wue.plastikg.de/abbreviation> rdf:type owl:DatatypeProperty ;
+                                      rdfs:domain owl:Thing ;
+                                      rdfs:range xsd:string ;
+                                      rdfs:label "abbreviation" .
 
 
-###  http://www.semanticweb.org/wahl/ontologies/2022/1/polymer#hasName
-:hasName rdf:type owl:DatatypeProperty ;
-         rdfs:range xsd:Name ;
-         rdfs:comment "Describe a more precise name of any company, polymer, additive."@en .
+###  http://wue.plastikg.de/description
+<http://wue.plastikg.de/description> rdf:type owl:DatatypeProperty ;
+                                     rdfs:label "description" .
 
 
-###  http://www.semanticweb.org/wahl/ontologies/2022/1/polymer#hasNominalValue
-:hasNominalValue rdf:type owl:DatatypeProperty ;
-                 rdfs:subPropertyOf :hasValue ;
-                 rdf:type owl:FunctionalProperty ;
-                 rdfs:domain :Attribute ;
-                 rdfs:range xsd:double .
+###  http://wue.plastikg.de/description_de
+<http://wue.plastikg.de/description_de> rdf:type owl:DatatypeProperty ;
+                                        rdfs:label "description_de" .
 
 
-###  http://www.semanticweb.org/wahl/ontologies/2022/1/polymer#hasValue
-:hasValue rdf:type owl:DatatypeProperty ,
-                   owl:FunctionalProperty ;
-          rdfs:domain :Attribute ;
-          rdfs:comment "An attribute describing a polymer can have different values."@en .
+###  http://wue.plastikg.de/exact_value
+<http://wue.plastikg.de/exact_value> rdf:type owl:DatatypeProperty ;
+                                     rdfs:subPropertyOf owl:topDataProperty ;
+                                     rdfs:domain <http://wue.plastikg.de/Attribute> ;
+                                     rdfs:range xsd:float ,
+                                                xsd:string ;
+                                     rdfs:label "exact_value" .
+
+
+###  http://wue.plastikg.de/has_condition
+<http://wue.plastikg.de/has_condition> rdf:type owl:DatatypeProperty ;
+                                       rdfs:subPropertyOf owl:topDataProperty ;
+                                       rdfs:domain <http://wue.plastikg.de/Attribute> ;
+                                       rdfs:range xsd:string ;
+                                       rdfs:label "has_condition" .
+
+
+###  http://wue.plastikg.de/max_value
+<http://wue.plastikg.de/max_value> rdf:type owl:DatatypeProperty ;
+                                   rdfs:subPropertyOf owl:topDataProperty ;
+                                   rdfs:domain <http://wue.plastikg.de/Attribute> ;
+                                   rdfs:range xsd:float ;
+                                   rdfs:label "max_value" .
+
+
+###  http://wue.plastikg.de/min_value
+<http://wue.plastikg.de/min_value> rdf:type owl:DatatypeProperty ;
+                                   rdfs:subPropertyOf owl:topDataProperty ;
+                                   rdfs:domain <http://wue.plastikg.de/Attribute> ;
+                                   rdfs:range xsd:float ;
+                                   rdfs:label "min_value" .
+
+
+###  http://wue.plastikg.de/number
+<http://wue.plastikg.de/number> rdf:type owl:DatatypeProperty ;
+                                rdfs:label "number" .
+
+
+###  http://wue.plastikg.de/symbol
+<http://wue.plastikg.de/symbol> rdf:type owl:DatatypeProperty ;
+                                rdfs:subPropertyOf owl:topDataProperty ;
+                                rdfs:domain <http://wue.plastikg.de/Unit> ;
+                                rdfs:range xsd:string ;
+                                rdfs:label "symbol" .
+
+
+###  http://wue.plastikg.de/title
+<http://wue.plastikg.de/title> rdf:type owl:DatatypeProperty ;
+                               rdfs:label "title" .
+
+
+###  http://wue.plastikg.de/title_de
+<http://wue.plastikg.de/title_de> rdf:type owl:DatatypeProperty ;
+                                  rdfs:label "title_de" .
+
+
+###  http://wue.plastikg.de/version
+<http://wue.plastikg.de/version> rdf:type owl:DatatypeProperty ;
+                                 rdfs:label "version" .
 
 
 #################################################################
 #    Classes
 #################################################################
 
-###  http://www.semanticweb.org/wahl/ontologies/2022/1/polymer#ASTM_D
-:ASTM_D rdf:type owl:Class ;
-        rdfs:subClassOf :Standard .
+###  http://wue.plastikg.de/ASTM_D
+<http://wue.plastikg.de/ASTM_D> rdf:type owl:Class ;
+                                rdfs:subClassOf <http://wue.plastikg.de/Standard> ;
+                                rdfs:label "ASTM_D" .
 
+
+###  http://wue.plastikg.de/Application
+<http://wue.plastikg.de/Application> rdf:type owl:Class ;
+                                     rdfs:subClassOf owl:Thing ;
+                                     rdfs:label "Application" .
 
-###  http://www.semanticweb.org/wahl/ontologies/2022/1/polymer#AcrylicEsterStyreneAcrylonitrileTerpolymer
-:AcrylicEsterStyreneAcrylonitrileTerpolymer rdf:type owl:Class ;
-                                            rdfs:subClassOf :Thermoplast ,
-                                                            [ rdf:type owl:Restriction ;
-                                                              owl:onProperty :createdBy ;
-                                                              owl:someValuesFrom :Copolymerisation
-                                                            ] ,
-                                                            [ rdf:type owl:Restriction ;
-                                                              owl:onProperty :satisfies ;
-                                                              owl:someValuesFrom :TechnicalRequirement
-                                                            ] ,
-                                                            [ rdf:type owl:Restriction ;
-                                                              owl:onProperty :belongsTo ;
-                                                              owl:allValuesFrom :Styrolpolymer
-                                                            ] ;
-                                            :polymerSymbol "ASA" ;
-                                            <http://www.w3.org/2004/02/skos/core#altLabel> "Acrylester-Styrol-Acrylnitril-Terpolymer"@de ,
-                                                                                           "Acrylic ester-stryrene-acrylonitrile terpolymer"@en .
 
+###  http://wue.plastikg.de/Attribute
+<http://wue.plastikg.de/Attribute> rdf:type owl:Class ;
+                                   rdfs:subClassOf owl:Thing ;
+                                   rdfs:label "Attribute" .
+
+
+###  http://wue.plastikg.de/Automotive
+<http://wue.plastikg.de/Automotive> rdf:type owl:Class ;
+                                    rdfs:subClassOf <http://wue.plastikg.de/Application> ;
+                                    rdfs:label "Automotive" .
+
+
+###  http://wue.plastikg.de/Company
+<http://wue.plastikg.de/Company> rdf:type owl:Class ;
+                                 rdfs:subClassOf owl:Thing ;
+                                 rdfs:label "Company" .
+
+
+###  http://wue.plastikg.de/DINStandard
+<http://wue.plastikg.de/DINStandard> rdf:type owl:Class ;
+                                     rdfs:subClassOf <http://wue.plastikg.de/Standard> ;
+                                     rdfs:label "DIN Standard" .
+
+
+###  http://wue.plastikg.de/Food
+<http://wue.plastikg.de/Food> rdf:type owl:Class ;
+                              rdfs:subClassOf <http://wue.plastikg.de/Application> ;
+                              rdfs:label "Food" .
+
+
+###  http://wue.plastikg.de/IEC
+<http://wue.plastikg.de/IEC> rdf:type owl:Class ;
+                             rdfs:subClassOf <http://wue.plastikg.de/Standard> ;
+                             rdfs:label "IEC" .
+
+
+###  http://wue.plastikg.de/ISO
+<http://wue.plastikg.de/ISO> rdf:type owl:Class ;
+                             rdfs:subClassOf <http://wue.plastikg.de/Standard> ;
+                             rdfs:label "ISO" .
+
+
+###  http://wue.plastikg.de/Polymer
+<http://wue.plastikg.de/Polymer> rdf:type owl:Class ;
+                                 rdfs:subClassOf owl:Thing ;
+                                 rdfs:label "Polymer" .
+
+
+###  http://wue.plastikg.de/Property
+<http://wue.plastikg.de/Property> rdf:type owl:Class ;
+                                  rdfs:subClassOf owl:Thing ;
+                                  rdfs:label "Property" .
+
+
+###  http://wue.plastikg.de/Standard
+<http://wue.plastikg.de/Standard> rdf:type owl:Class ;
+                                  rdfs:subClassOf owl:Thing ,
+                                                  [ rdf:type owl:Restriction ;
+                                                    owl:onProperty <http://wue.plastikg.de/description> ;
+                                                    owl:someValuesFrom xsd:string
+                                                  ] ,
+                                                  [ rdf:type owl:Restriction ;
+                                                    owl:onProperty <http://wue.plastikg.de/description_de> ;
+                                                    owl:someValuesFrom xsd:string
+                                                  ] ,
+                                                  [ rdf:type owl:Restriction ;
+                                                    owl:onProperty <http://wue.plastikg.de/number> ;
+                                                    owl:someValuesFrom xsd:integer
+                                                  ] ,
+                                                  [ rdf:type owl:Restriction ;
+                                                    owl:onProperty <http://wue.plastikg.de/title> ;
+                                                    owl:someValuesFrom xsd:string
+                                                  ] ,
+                                                  [ rdf:type owl:Restriction ;
+                                                    owl:onProperty <http://wue.plastikg.de/title_de> ;
+                                                    owl:someValuesFrom xsd:string
+                                                  ] ,
+                                                  [ rdf:type owl:Restriction ;
+                                                    owl:onProperty <http://wue.plastikg.de/version> ;
+                                                    owl:someValuesFrom xsd:string
+                                                  ] ;
+                                  rdfs:label "Standard" .
+
+
+###  http://wue.plastikg.de/UL
+<http://wue.plastikg.de/UL> rdf:type owl:Class ;
+                            rdfs:subClassOf <http://wue.plastikg.de/Standard> ;
+                            rdfs:label "UL" .
+
 
-###  http://www.semanticweb.org/wahl/ontologies/2022/1/polymer#AcrylonitrileButadieneRubber
-:AcrylonitrileButadieneRubber rdf:type owl:Class ;
-                              rdfs:subClassOf :Elastomer ,
-                                              [ rdf:type owl:Restriction ;
-                                                owl:onProperty :belongsTo ;
-                                                owl:allValuesFrom :Styrolpolymer
-                                              ] ,
-                                              [ rdf:type owl:Restriction ;
-                                                owl:onProperty :createdUsing ;
-                                                owl:allValuesFrom :Copolymerisation
-                                              ] ;
-                              :polymerSymbol "AB"@en ,
-                                             "NBR"@en ;
-                              <http://www.w3.org/2004/02/skos/core#altLabel> "Acrylnitril-Butadien-Kautschuk"@de ,
-                                                                             "Acrylonitrile-Butadiene Rubber"@en ,
-                                                                             "Nitrile Rubber"@en ,
-                                                                             "Nitrilkautschuk"@de .
+###  http://wue.plastikg.de/Unit
+<http://wue.plastikg.de/Unit> rdf:type owl:Class ;
+                              rdfs:subClassOf owl:Thing ;
+                              rdfs:comment "The unit used to measure a certain attribute. A set of Unit instances is used by a Standard and a Unit instance is referenced by an attribute. The set of Unit instances is set."^^xsd:string ;
+                              rdfs:label "Unit" .
 
 
-###  http://www.semanticweb.org/wahl/ontologies/2022/1/polymer#AcrylonitrileButadieneStyreneCopolymer
-:AcrylonitrileButadieneStyreneCopolymer rdf:type owl:Class ;
-                                        rdfs:subClassOf :Thermoplast ,
-                                                        [ rdf:type owl:Restriction ;
-                                                          owl:onProperty :satisfies ;
-                                                          owl:someValuesFrom :TechnicalRequirement
-                                                        ] ,
-                                                        [ rdf:type owl:Restriction ;
-                                                          owl:onProperty :belongsTo ;
-                                                          owl:allValuesFrom :Styrolpolymer
-                                                        ] ,
-                                                        [ rdf:type owl:Restriction ;
-                                                          owl:onProperty :createdUsing ;
-                                                          owl:allValuesFrom :Copolymerisation
-                                                        ] ;
-                                        :polymerSymbol "ABS" ;
-                                        <http://www.w3.org/2004/02/skos/core#altLabel> "Acrylnitril-Butadien-Styrol-Copolymerisat"@de ,
-                                                                                       "Acrylonitrile-butadiene-styrene Copolymer"@en .
-
-
-###  http://www.semanticweb.org/wahl/ontologies/2022/1/polymer#Additive
-:Additive rdf:type owl:Class .
-
-
-###  http://www.semanticweb.org/wahl/ontologies/2022/1/polymer#Antioxidant
-:Antioxidant rdf:type owl:Class ;
-             rdfs:subClassOf :Additive .
-
-
-###  http://www.semanticweb.org/wahl/ontologies/2022/1/polymer#AntistaticAgent
-:AntistaticAgent rdf:type owl:Class ;
-                 rdfs:subClassOf :Additive .
-
-
-###  http://www.semanticweb.org/wahl/ontologies/2022/1/polymer#Application
-:Application rdf:type owl:Class .
-
-
-###  http://www.semanticweb.org/wahl/ontologies/2022/1/polymer#ApplicationRequirements
-:ApplicationRequirements rdf:type owl:Class .
-
-
-###  http://www.semanticweb.org/wahl/ontologies/2022/1/polymer#Attribute
-:Attribute rdf:type owl:Class .
-
-
-###  http://www.semanticweb.org/wahl/ontologies/2022/1/polymer#Automotive
-:Automotive rdf:type owl:Class ;
-            rdfs:subClassOf :Application .
-
-
-###  http://www.semanticweb.org/wahl/ontologies/2022/1/polymer#BurnBehavior
-:BurnBehavior rdf:type owl:Class ;
-              rdfs:subClassOf :Thermal ,
-                              [ rdf:type owl:Restriction ;
-                                owl:onProperty :hasValue ;
-                                owl:someValuesFrom [ rdf:type rdfs:Datatype ;
-                                                     owl:oneOf [ rdf:type rdf:List ;
-                                                                 rdf:first "B" ;
-                                                                 rdf:rest [ rdf:type rdf:List ;
-                                                                            rdf:first "HB" ;
-                                                                            rdf:rest rdf:nil
-                                                                          ]
-                                                               ]
-                                                   ]
-                              ] .
-
-
-###  http://www.semanticweb.org/wahl/ontologies/2022/1/polymer#CelluloseAcetate
-:CelluloseAcetate rdf:type owl:Class ;
-                  rdfs:subClassOf :Thermoplast ,
-                                  [ rdf:type owl:Restriction ;
-                                    owl:onProperty :satisfies ;
-                                    owl:someValuesFrom :SpecialRequirement
-                                  ] ,
-                                  [ rdf:type owl:Restriction ;
-                                    owl:onProperty :belongsTo ;
-                                    owl:allValuesFrom :ModifiedPolymers
-                                  ] ,
-                                  [ rdf:type owl:Restriction ;
-                                    owl:onProperty :createdBy ;
-                                    owl:allValuesFrom :Celluloseester
-                                  ] ;
-                  :polymerSymbol "CA" ;
-                  <http://www.w3.org/2004/02/skos/core#altLabel> "Cellulose Acetate"@en ,
-                                                                 "Celluloseacetat"@de .
-
-
-###  http://www.semanticweb.org/wahl/ontologies/2022/1/polymer#CelluloseNitrate
-:CelluloseNitrate rdf:type owl:Class ;
-                  rdfs:subClassOf :Thermoplast ,
-                                  [ rdf:type owl:Restriction ;
-                                    owl:onProperty :satisfies ;
-                                    owl:someValuesFrom :SpecialRequirement
-                                  ] ,
-                                  [ rdf:type owl:Restriction ;
-                                    owl:onProperty :belongsTo ;
-                                    owl:allValuesFrom :ModifiedPolymers
-                                  ] ,
-                                  [ rdf:type owl:Restriction ;
-                                    owl:onProperty :createdBy ;
-                                    owl:allValuesFrom :Celluloseester
-                                  ] ;
-                  :polymerSymbol "CN" ;
-                  <http://www.w3.org/2004/02/skos/core#altLabel> "Cellulose Nitrate"@en ,
-                                                                 "Cellulosenitrat"@de .
-
-
-###  http://www.semanticweb.org/wahl/ontologies/2022/1/polymer#Celluloseester
-:Celluloseester rdf:type owl:Class ;
-                rdfs:subClassOf :FormationProcess .
-
-
-###  http://www.semanticweb.org/wahl/ontologies/2022/1/polymer#Chemical
-:Chemical rdf:type owl:Class ;
-          rdfs:subClassOf :Attribute .
-
-
-###  http://www.semanticweb.org/wahl/ontologies/2022/1/polymer#ChlorinatedPolyethylene
-:ChlorinatedPolyethylene rdf:type owl:Class ;
-                         rdfs:subClassOf :Thermoplast ,
-                                         [ rdf:type owl:Restriction ;
-                                           owl:onProperty :satisfies ;
-                                           owl:someValuesFrom :StandardRequirement
-                                         ] ,
-                                         [ rdf:type owl:Restriction ;
-                                           owl:onProperty :belongsTo ;
-                                           owl:allValuesFrom :Polyolefine
-                                         ] ,
-                                         [ rdf:type owl:Restriction ;
-                                           owl:onProperty :createdBy ;
-                                           owl:allValuesFrom :Polymerisation
-                                         ] ;
-                         :polymerSymbol "CPE" ,
-                                        "PE-C" ;
-                         <http://www.w3.org/2004/02/skos/core#altLabel> "Chloriertes Polyethylen"@de ,
-                                                                        "Ethylene-chlorotrifluoroethylene"@en .
-
-
-###  http://www.semanticweb.org/wahl/ontologies/2022/1/polymer#ChlorinatedPolyvinylChloride
-:ChlorinatedPolyvinylChloride rdf:type owl:Class ;
-                              rdfs:subClassOf :Thermoplast ,
-                                              [ rdf:type owl:Restriction ;
-                                                owl:onProperty :satisfies ;
-                                                owl:someValuesFrom :StandardRequirement
-                                              ] ,
-                                              [ rdf:type owl:Restriction ;
-                                                owl:onProperty :belongsTo ;
-                                                owl:allValuesFrom :Vinylpolymer
-                                              ] ,
-                                              [ rdf:type owl:Restriction ;
-                                                owl:onProperty :createdBy ;
-                                                owl:allValuesFrom :Polymerisation
-                                              ] ;
-                              :polymerSymbol "C-PVE" ,
-                                             "PVC-C" ;
-                              <http://www.w3.org/2004/02/skos/core#altLabel> "Chloriertes Polyvinylchlorid"@de ,
-                                                                             "Chlorinated Polyvinyl Chloride"@en .
-
-
-###  http://www.semanticweb.org/wahl/ontologies/2022/1/polymer#Colorant
-:Colorant rdf:type owl:Class ;
-          rdfs:subClassOf :Additive .
-
-
-###  http://www.semanticweb.org/wahl/ontologies/2022/1/polymer#Company
-:Company rdf:type owl:Class ;
-         owl:hasKey ( :createdBy
-                    ) .
-
-
-###  http://www.semanticweb.org/wahl/ontologies/2022/1/polymer#Copolymerisation
-:Copolymerisation rdf:type owl:Class ;
-                  rdfs:subClassOf :FormationProcess .
-
-
-###  http://www.semanticweb.org/wahl/ontologies/2022/1/polymer#DIN
-:DIN rdf:type owl:Class ;
-     rdfs:subClassOf :Standard .
-
-
-###  http://www.semanticweb.org/wahl/ontologies/2022/1/polymer#Duroplast
-:Duroplast rdf:type owl:Class ;
-           rdfs:subClassOf :Polymer .
-
-
-###  http://www.semanticweb.org/wahl/ontologies/2022/1/polymer#Elastomer
-:Elastomer rdf:type owl:Class ;
-           rdfs:subClassOf :Polymer .
-
-
-###  http://www.semanticweb.org/wahl/ontologies/2022/1/polymer#Electrical
-:Electrical rdf:type owl:Class ;
-            rdfs:subClassOf :Attribute .
-
-
-###  http://www.semanticweb.org/wahl/ontologies/2022/1/polymer#EmulsionPolyvinlychloride
-:EmulsionPolyvinlychloride rdf:type owl:Class ;
-                           rdfs:subClassOf :Thermoplast ,
-                                           [ rdf:type owl:Restriction ;
-                                             owl:onProperty :satisfies ;
-                                             owl:someValuesFrom :StandardRequirement
-                                           ] ,
-                                           [ rdf:type owl:Restriction ;
-                                             owl:onProperty :belongsTo ;
-                                             owl:allValuesFrom :Vinylpolymer
-                                           ] ,
-                                           [ rdf:type owl:Restriction ;
-                                             owl:onProperty :createdBy ;
-                                             owl:allValuesFrom :Polymerisation
-                                           ] ;
-                           :polymerSymbol "E-PVC" ,
-                                          "PVCE" ;
-                           <http://www.w3.org/2004/02/skos/core#altLabel> "Emulsion Polyvinylchloride"@en ,
-                                                                          "Emulsions-Polyvinylchlorid"@de .
-
-
-###  http://www.semanticweb.org/wahl/ontologies/2022/1/polymer#EthyleneAcrylicAcidAcrylateCopolymer
-:EthyleneAcrylicAcidAcrylateCopolymer rdf:type owl:Class ;
-                                      rdfs:subClassOf :Elastomer ,
-                                                      [ rdf:type owl:Restriction ;
-                                                        owl:onProperty :belongsTo ;
-                                                        owl:allValuesFrom :Polyolefine
-                                                      ] ,
-                                                      [ rdf:type owl:Restriction ;
-                                                        owl:onProperty :createdUsing ;
-                                                        owl:allValuesFrom :Copolymerisation
-                                                      ] ;
-                                      :polymerSymbol "EAA"@en ;
-                                      <http://www.w3.org/2004/02/skos/core#altLabel> "Ethylen-Acrylsäure-Acrylat-Copolymer"@de ,
-                                                                                     "Ethylene-acrylic Acid-acrylate Copolymer"@en .
-
-
-###  http://www.semanticweb.org/wahl/ontologies/2022/1/polymer#EthyleneAcrylicAcidMaleicAnhydride
-:EthyleneAcrylicAcidMaleicAnhydride rdf:type owl:Class ;
-                                    rdfs:subClassOf :Elastomer ,
-                                                    [ rdf:type owl:Restriction ;
-                                                      owl:onProperty :belongsTo ;
-                                                      owl:allValuesFrom :Polyolefine
-                                                    ] ,
-                                                    [ rdf:type owl:Restriction ;
-                                                      owl:onProperty :createdUsing ;
-                                                      owl:allValuesFrom :Copolymerisation
-                                                    ] ;
-                                    :polymerSymbol "EAMA"@en ;
-                                    <http://www.w3.org/2004/02/skos/core#altLabel> "Ethylen-Acrylsäure-Maleinsäureanhydrid"@de ,
-                                                                                   "Ethylene-acrylic Acid-maleic Anhydride"@en .
-
-
-###  http://www.semanticweb.org/wahl/ontologies/2022/1/polymer#EthyleneButylAcrylateCopolymer
-:EthyleneButylAcrylateCopolymer rdf:type owl:Class ;
-                                rdfs:subClassOf :Elastomer ,
-                                                [ rdf:type owl:Restriction ;
-                                                  owl:onProperty :belongsTo ;
-                                                  owl:allValuesFrom :Polyolefine
-                                                ] ,
-                                                [ rdf:type owl:Restriction ;
-                                                  owl:onProperty :createdUsing ;
-                                                  owl:allValuesFrom :Copolymerisation
-                                                ] ;
-                                :polymerSymbol "EBA"@en ;
-                                <http://www.w3.org/2004/02/skos/core#altLabel> "Ethylen-Butylacrylat-Copolymer"@de ,
-                                                                               "Ethylene-Butyl Acrylate Copolymer"@en .
-
-
-###  http://www.semanticweb.org/wahl/ontologies/2022/1/polymer#EthyleneChlorotrifluoroethylene
-:EthyleneChlorotrifluoroethylene rdf:type owl:Class ;
-                                 rdfs:subClassOf :Thermoplast ,
-                                                 [ rdf:type owl:Restriction ;
-                                                   owl:onProperty :satisfies ;
-                                                   owl:someValuesFrom :TechnicalRequirement
-                                                 ] ,
-                                                 [ rdf:type owl:Restriction ;
-                                                   owl:onProperty :belongsTo ;
-                                                   owl:allValuesFrom :Fluorpolymer
-                                                 ] ,
-                                                 [ rdf:type owl:Restriction ;
-                                                   owl:onProperty :createdBy ;
-                                                   owl:allValuesFrom :Copolymerisation
-                                                 ] ;
-                                 :polymerSymbol "ECTFE" ;
-                                 <http://www.w3.org/2004/02/skos/core#altLabel> "Ethylen-Chlortrifluorethylen"@de ,
-                                                                                "Ethylene-chlorotrifluoroethylene"@en .
-
-
-###  http://www.semanticweb.org/wahl/ontologies/2022/1/polymer#EthyleneMethacrylateCopolymer
-:EthyleneMethacrylateCopolymer rdf:type owl:Class ;
-                               rdfs:subClassOf :Thermoplast ,
-                                               [ rdf:type owl:Restriction ;
-                                                 owl:onProperty :belongsTo ;
-                                                 owl:allValuesFrom :Polyolefine
-                                               ] ,
-                                               [ rdf:type owl:Restriction ;
-                                                 owl:onProperty :createdBy ;
-                                                 owl:allValuesFrom :Copolymerisation
-                                               ] ;
-                               :polymerSymbol "EMA" ;
-                               <http://www.w3.org/2004/02/skos/core#altLabel> "Ehtylen-Methacrylat-Copolymer"@de ,
-                                                                              "Ethylene Methacrylate Copolymer"@en .
-
-
-###  http://www.semanticweb.org/wahl/ontologies/2022/1/polymer#EthylenePropyleneDieneRubber
-:EthylenePropyleneDieneRubber rdf:type owl:Class ;
-                              rdfs:subClassOf :Elastomer ,
-                                              [ rdf:type owl:Restriction ;
-                                                owl:onProperty :belongsTo ;
-                                                owl:allValuesFrom :Polyolefine
-                                              ] ,
-                                              [ rdf:type owl:Restriction ;
-                                                owl:onProperty :createdUsing ;
-                                                owl:allValuesFrom :Copolymerisation
-                                              ] ;
-                              :polymerSymbol "EPDM" ;
-                              <http://www.w3.org/2004/02/skos/core#altLabel> "Ethylen-Propylen-Dien-Kautschuk"@de ,
-                                                                             "Ethylene-Proylene-Diene Rubber"@en .
-
-
-###  http://www.semanticweb.org/wahl/ontologies/2022/1/polymer#EthyleneTetrafluoroethylene
-:EthyleneTetrafluoroethylene rdf:type owl:Class ;
-                             rdfs:subClassOf :Thermoplast ,
-                                             [ rdf:type owl:Restriction ;
-                                               owl:onProperty :belongsTo ;
-                                               owl:allValuesFrom :Fluorpolymer
-                                             ] ,
-                                             [ rdf:type owl:Restriction ;
-                                               owl:onProperty :createdBy ;
-                                               owl:allValuesFrom :Copolymerisation
-                                             ] ;
-                             :polymerSymbol "ETFE" ;
-                             <http://www.w3.org/2004/02/skos/core#altLabel> "Ethylen-Tetrafluorethylen"@de ,
-                                                                            "Ethylene Tetrafluorethylene"@en .
-
-
-###  http://www.semanticweb.org/wahl/ontologies/2022/1/polymer#EthyleneVinylAcetateCopolymer
-:EthyleneVinylAcetateCopolymer rdf:type owl:Class ;
-                               rdfs:subClassOf :Elastomer ,
-                                               [ rdf:type owl:Restriction ;
-                                                 owl:onProperty :satisfies ;
-                                                 owl:someValuesFrom :StandardRequirement
-                                               ] ,
-                                               [ rdf:type owl:Restriction ;
-                                                 owl:onProperty :belongsTo ;
-                                                 owl:allValuesFrom :Vinylpolymer
-                                               ] ,
-                                               [ rdf:type owl:Restriction ;
-                                                 owl:onProperty :createdUsing ;
-                                                 owl:allValuesFrom :Copolymerisation
-                                               ] ;
-                               :polymerSymbol "EVA" ;
-                               <http://www.w3.org/2004/02/skos/core#altLabel> "Ethylen-Vinylacetat-Copolymer"@de ,
-                                                                              "Ethylene-Vinyl Acetate Copolymer"@en .
-
-
-###  http://www.semanticweb.org/wahl/ontologies/2022/1/polymer#FiberMaterial
-:FiberMaterial rdf:type owl:Class ;
-               rdfs:subClassOf :Additive .
-
-
-###  http://www.semanticweb.org/wahl/ontologies/2022/1/polymer#FillerMaterial
-:FillerMaterial rdf:type owl:Class ;
-                rdfs:subClassOf :Additive .
-
-
-###  http://www.semanticweb.org/wahl/ontologies/2022/1/polymer#FlameRetardant
-:FlameRetardant rdf:type owl:Class ;
-                rdfs:subClassOf :Additive .
-
-
-###  http://www.semanticweb.org/wahl/ontologies/2022/1/polymer#Flammability
-:Flammability rdf:type owl:Class ;
-              rdfs:subClassOf :Attribute .
-
-
-###  http://www.semanticweb.org/wahl/ontologies/2022/1/polymer#FluoroethylenePropylene
-:FluoroethylenePropylene rdf:type owl:Class ;
-                         rdfs:subClassOf :Thermoplast ,
-                                         [ rdf:type owl:Restriction ;
-                                           owl:onProperty :belongsTo ;
-                                           owl:allValuesFrom :Fluorpolymer
-                                         ] ,
-                                         [ rdf:type owl:Restriction ;
-                                           owl:onProperty :createdBy ;
-                                           owl:allValuesFrom :Copolymerisation
-                                         ] ;
-                         :polymerSymbol "FEP" ;
-                         <http://www.w3.org/2004/02/skos/core#altLabel> "Fluorethylenpropylen"@de ,
-                                                                        "Fluroethylene Propylene"@en .
-
-
-###  http://www.semanticweb.org/wahl/ontologies/2022/1/polymer#Fluorpolymer
-:Fluorpolymer rdf:type owl:Class ;
-              rdfs:subClassOf :PolymerGroup .
-
-
-###  http://www.semanticweb.org/wahl/ontologies/2022/1/polymer#FoamedPolyethylene
-:FoamedPolyethylene rdf:type owl:Class ;
-                    rdfs:subClassOf :Thermoplast ,
-                                    [ rdf:type owl:Restriction ;
-                                      owl:onProperty :satisfies ;
-                                      owl:someValuesFrom :StandardRequirement
-                                    ] ,
-                                    [ rdf:type owl:Restriction ;
-                                      owl:onProperty :belongsTo ;
-                                      owl:allValuesFrom :Polyolefine
-                                    ] ,
-                                    [ rdf:type owl:Restriction ;
-                                      owl:onProperty :createdBy ;
-                                      owl:allValuesFrom :Polymerisation
-                                    ] ;
-                    :polymerSymbol "EPE" ;
-                    <http://www.w3.org/2004/02/skos/core#altLabel> "Foamed Polyethylene"@en ,
-                                                                   "Geschäumtes Polyethylen"@de .
-
-
-###  http://www.semanticweb.org/wahl/ontologies/2022/1/polymer#FoamedPolypropylene
-:FoamedPolypropylene rdf:type owl:Class ;
-                     rdfs:subClassOf :Thermoplast ,
-                                     [ rdf:type owl:Restriction ;
-                                       owl:onProperty :satisfies ;
-                                       owl:someValuesFrom :StandardRequirement
-                                     ] ,
-                                     [ rdf:type owl:Restriction ;
-                                       owl:onProperty :belongsTo ;
-                                       owl:allValuesFrom :Polyolefine
-                                     ] ,
-                                     [ rdf:type owl:Restriction ;
-                                       owl:onProperty :createdBy ;
-                                       owl:allValuesFrom :Polymerisation
-                                     ] ;
-                     :polymerSymbol "EPP" ;
-                     <http://www.w3.org/2004/02/skos/core#altLabel> "Foamed Polypropylene"@en ,
-                                                                    "Geschäumtes Polypropylen"@de .
-
-
-###  http://www.semanticweb.org/wahl/ontologies/2022/1/polymer#FoamingAgent
-:FoamingAgent rdf:type owl:Class ;
-              rdfs:subClassOf :Additive .
-
-
-###  http://www.semanticweb.org/wahl/ontologies/2022/1/polymer#Food
-:Food rdf:type owl:Class ;
-      rdfs:subClassOf :Application .
-
-
-###  http://www.semanticweb.org/wahl/ontologies/2022/1/polymer#FormationProcess
-:FormationProcess rdf:type owl:Class ;
-                  owl:hasKey ( :createdUsing
-                             ) .
-
-
-###  http://www.semanticweb.org/wahl/ontologies/2022/1/polymer#General
-:General rdf:type owl:Class ;
-         rdfs:subClassOf :Attribute .
-
-
-###  http://www.semanticweb.org/wahl/ontologies/2022/1/polymer#HighDensityPolyethylene
-:HighDensityPolyethylene rdf:type owl:Class ;
-                         rdfs:subClassOf :Thermoplast ,
-                                         [ rdf:type owl:Restriction ;
-                                           owl:onProperty :satisfies ;
-                                           owl:someValuesFrom :StandardRequirement
-                                         ] ,
-                                         [ rdf:type owl:Restriction ;
-                                           owl:onProperty :belongsTo ;
-                                           owl:allValuesFrom :Polyolefine
-                                         ] ,
-                                         [ rdf:type owl:Restriction ;
-                                           owl:onProperty :createdBy ;
-                                           owl:allValuesFrom :Polymerisation
-                                         ] ;
-                         :polymerSymbol "HD-PE" ,
-                                        "HDPE" ,
-                                        "PE-HD" ;
-                         <http://www.w3.org/2004/02/skos/core#altLabel> "High density Polyethylene"@en ,
-                                                                        "Polyethylen hoher Dichte"@de .
-
-
-###  http://www.semanticweb.org/wahl/ontologies/2022/1/polymer#HighImpactPolystyrene
-:HighImpactPolystyrene rdf:type owl:Class ;
-                       rdfs:subClassOf :Thermoplast ,
-                                       [ rdf:type owl:Restriction ;
-                                         owl:onProperty :satisfies ;
-                                         owl:someValuesFrom :StandardRequirement
-                                       ] ,
-                                       [ rdf:type owl:Restriction ;
-                                         owl:onProperty :belongsTo ;
-                                         owl:allValuesFrom :Polyolefine
-                                       ] ,
-                                       [ rdf:type owl:Restriction ;
-                                         owl:onProperty :createdBy ;
-                                         owl:allValuesFrom :Copolymerisation
-                                       ] ;
-                       :polymerSymbol "HIPS" ,
-                                      "PS-HI" ;
-                       <http://www.w3.org/2004/02/skos/core#altLabel> "High impact Poylstyrene"@en ,
-                                                                      "Hochschlagzähes Polystyrol"@de .
-
-
-###  http://www.semanticweb.org/wahl/ontologies/2022/1/polymer#HighPerformanceRequirement
-:HighPerformanceRequirement rdf:type owl:Class ;
-                            rdfs:subClassOf :ApplicationRequirements .
-
-
-###  http://www.semanticweb.org/wahl/ontologies/2022/1/polymer#IEC
-:IEC rdf:type owl:Class ;
-     rdfs:subClassOf :Standard .
-
-
-###  http://www.semanticweb.org/wahl/ontologies/2022/1/polymer#ISO
-:ISO rdf:type owl:Class ;
-     rdfs:subClassOf :Standard .
-
-
-###  http://www.semanticweb.org/wahl/ontologies/2022/1/polymer#ImpactModifier
-:ImpactModifier rdf:type owl:Class ;
-                rdfs:subClassOf :Additive .
-
-
-###  http://www.semanticweb.org/wahl/ontologies/2022/1/polymer#LightStabilizer
-:LightStabilizer rdf:type owl:Class ;
-                 rdfs:subClassOf :Additive .
-
-
-###  http://www.semanticweb.org/wahl/ontologies/2022/1/polymer#LinearLowDensityPolyethylene
-:LinearLowDensityPolyethylene rdf:type owl:Class ;
-                              rdfs:subClassOf :Thermoplast ,
-                                              [ rdf:type owl:Restriction ;
-                                                owl:onProperty :satisfies ;
-                                                owl:someValuesFrom :StandardRequirement
-                                              ] ,
-                                              [ rdf:type owl:Restriction ;
-                                                owl:onProperty :belongsTo ;
-                                                owl:allValuesFrom :Polyolefine
-                                              ] ,
-                                              [ rdf:type owl:Restriction ;
-                                                owl:onProperty :createdBy ;
-                                                owl:allValuesFrom :Polymerisation
-                                              ] ;
-                              :polymerSymbol "LLD-PE" ,
-                                             "LLDPE" ,
-                                             "PE-LLD" ;
-                              <http://www.w3.org/2004/02/skos/core#altLabel> "Linear low density Polyethylene"@en ,
-                                                                             "Lineares Polyethylen niedriger Dichte"@de .
-
-
-###  http://www.semanticweb.org/wahl/ontologies/2022/1/polymer#LiquidCrystallinePolymers
-:LiquidCrystallinePolymers rdf:type owl:Class ;
-                           rdfs:subClassOf :Thermoplast ,
-                                           [ rdf:type owl:Restriction ;
-                                             owl:onProperty :satisfies ;
-                                             owl:someValuesFrom :HighPerformanceRequirement
-                                           ] ,
-                                           [ rdf:type owl:Restriction ;
-                                             owl:onProperty :belongsTo ;
-                                             owl:allValuesFrom :Polyester
-                                           ] ,
-                                           [ rdf:type owl:Restriction ;
-                                             owl:onProperty :createdBy ;
-                                             owl:allValuesFrom :Polycondensation
-                                           ] ;
-                           :polymerSymbol "LCP" ;
-                           <http://www.w3.org/2004/02/skos/core#altLabel> "Flüssigkristalline Polymere"@de ,
-                                                                          "Liquid Crystalline Polymers"@en .
-
-
-###  http://www.semanticweb.org/wahl/ontologies/2022/1/polymer#LowDensityPolyethylene
-:LowDensityPolyethylene rdf:type owl:Class ;
-                        rdfs:subClassOf :Thermoplast ,
-                                        [ rdf:type owl:Restriction ;
-                                          owl:onProperty :satisfies ;
-                                          owl:someValuesFrom :StandardRequirement
-                                        ] ,
-                                        [ rdf:type owl:Restriction ;
-                                          owl:onProperty :belongsTo ;
-                                          owl:allValuesFrom :Polyolefine
-                                        ] ,
-                                        [ rdf:type owl:Restriction ;
-                                          owl:onProperty :createdBy ;
-                                          owl:allValuesFrom :Polymerisation
-                                        ] ;
-                        :polymerSymbol "LD-PE" ,
-                                       "LDPE" ,
-                                       "PE-LD" ;
-                        <http://www.w3.org/2004/02/skos/core#altLabel> "Low density Polyethylene"@en ,
-                                                                       "Polyethylen niedriger Dichte"@de .
-
-
-###  http://www.semanticweb.org/wahl/ontologies/2022/1/polymer#Lubricant
-:Lubricant rdf:type owl:Class ;
-           rdfs:subClassOf :Additive .
-
-
-###  http://www.semanticweb.org/wahl/ontologies/2022/1/polymer#Mechanical
-:Mechanical rdf:type owl:Class ;
-            rdfs:subClassOf :Attribute .
-
-
-###  http://www.semanticweb.org/wahl/ontologies/2022/1/polymer#MediumDensityPolyethylene
-:MediumDensityPolyethylene rdf:type owl:Class ;
-                           rdfs:subClassOf :Thermoplast ,
-                                           [ rdf:type owl:Restriction ;
-                                             owl:onProperty :satisfies ;
-                                             owl:someValuesFrom :StandardRequirement
-                                           ] ,
-                                           [ rdf:type owl:Restriction ;
-                                             owl:onProperty :belongsTo ;
-                                             owl:allValuesFrom :Polyolefine
-                                           ] ,
-                                           [ rdf:type owl:Restriction ;
-                                             owl:onProperty :createdBy ;
-                                             owl:allValuesFrom :Polymerisation
-                                           ] ;
-                           :polymerSymbol "MD-PE" ,
-                                          "MDPE" ,
-                                          "PE-MD" ;
-                           <http://www.w3.org/2004/02/skos/core#altLabel> "Medium density Polyethylene"@en ,
-                                                                          "Polyethylen mittlerer Dichte"@de .
-
-
-###  http://www.semanticweb.org/wahl/ontologies/2022/1/polymer#MethylMethacrylateAcrylonitrileButadieneStyrene
-:MethylMethacrylateAcrylonitrileButadieneStyrene rdf:type owl:Class ;
-                                                 rdfs:subClassOf :Thermoplast ,
-                                                                 [ rdf:type owl:Restriction ;
-                                                                   owl:onProperty :satisfies ;
-                                                                   owl:someValuesFrom :TechnicalRequirement
-                                                                 ] ,
-                                                                 [ rdf:type owl:Restriction ;
-                                                                   owl:onProperty :belongsTo ;
-                                                                   owl:allValuesFrom :Styrolpolymer
-                                                                 ] ,
-                                                                 [ rdf:type owl:Restriction ;
-                                                                   owl:onProperty :createdBy ;
-                                                                   owl:allValuesFrom :Copolymerisation
-                                                                 ] ;
-                                                 :polymerSymbol "MABS" ;
-                                                 <http://www.w3.org/2004/02/skos/core#altLabel> "Methyl Methacrylate Acrylonitrile Butadiene Styrene"@en ,
-                                                                                                "Methylmethacrylat-Acrylnitrit-Butadien-Styrol"@de .
-
-
-###  http://www.semanticweb.org/wahl/ontologies/2022/1/polymer#ModifiedPolymers
-:ModifiedPolymers rdf:type owl:Class ;
-                  rdfs:subClassOf :PolymerGroup .
-
-
-###  http://www.semanticweb.org/wahl/ontologies/2022/1/polymer#NaturalFiberReinforcedPlastic
-:NaturalFiberReinforcedPlastic rdf:type owl:Class ;
-                               rdfs:subClassOf :Thermoplast ;
-                               :polymerSymbol "NFK" ,
-                                              "NFR" ;
-                               <http://www.w3.org/2004/02/skos/core#altLabel> "Natural fiber reinforced plastic"@en ,
-                                                                              "Naturfaserverstärkter Kunststoff"@de .
-
-
-###  http://www.semanticweb.org/wahl/ontologies/2022/1/polymer#Optical
-:Optical rdf:type owl:Class ;
-         rdfs:subClassOf :Attribute .
-
-
-###  http://www.semanticweb.org/wahl/ontologies/2022/1/polymer#Other
-:Other rdf:type owl:Class ;
-       rdfs:subClassOf :Attribute .
-
-
-###  http://www.semanticweb.org/wahl/ontologies/2022/1/polymer#PerfluoroalkoxyCopolymer
-:PerfluoroalkoxyCopolymer rdf:type owl:Class ;
-                          rdfs:subClassOf :Thermoplast ,
-                                          [ rdf:type owl:Restriction ;
-                                            owl:onProperty :satisfies ;
-                                            owl:someValuesFrom :HighPerformanceRequirement
-                                          ] ,
-                                          [ rdf:type owl:Restriction ;
-                                            owl:onProperty :belongsTo ;
-                                            owl:allValuesFrom :Fluorpolymer
-                                          ] ,
-                                          [ rdf:type owl:Restriction ;
-                                            owl:onProperty :createdBy ;
-                                            owl:allValuesFrom :Copolymerisation
-                                          ] ;
-                          :polymerSymbol "PFA" ;
-                          <http://www.w3.org/2004/02/skos/core#altLabel> "Perfluoralkoxycopolymer"@de ,
-                                                                         "Perfluoroalkoxy Copolymer"@en .
-
-
-###  http://www.semanticweb.org/wahl/ontologies/2022/1/polymer#Physical
-:Physical rdf:type owl:Class ;
-          rdfs:subClassOf :Attribute .
-
-
-###  http://www.semanticweb.org/wahl/ontologies/2022/1/polymer#Plasticizer
-:Plasticizer rdf:type owl:Class ;
-             rdfs:subClassOf :Additive .
-
-
-###  http://www.semanticweb.org/wahl/ontologies/2022/1/polymer#Polyacetal
-:Polyacetal rdf:type owl:Class ;
-            rdfs:subClassOf :PolymerGroup .
-
-
-###  http://www.semanticweb.org/wahl/ontologies/2022/1/polymer#Polyacrylate
-:Polyacrylate rdf:type owl:Class ;
-              rdfs:subClassOf :PolymerGroup .
-
-
-###  http://www.semanticweb.org/wahl/ontologies/2022/1/polymer#Polyacrylonitrile
-:Polyacrylonitrile rdf:type owl:Class ;
-                   rdfs:subClassOf :Thermoplast ,
-                                   [ rdf:type owl:Restriction ;
-                                     owl:onProperty :satisfies ;
-                                     owl:someValuesFrom :TechnicalRequirement
-                                   ] ,
-                                   [ rdf:type owl:Restriction ;
-                                     owl:onProperty :belongsTo ;
-                                     owl:allValuesFrom :Polyacrylate
-                                   ] ,
-                                   [ rdf:type owl:Restriction ;
-                                     owl:onProperty :createdBy ;
-                                     owl:allValuesFrom :Polycondensation
-                                   ] ;
-                   :polymerSymbol "PAN" ;
-                   <http://www.w3.org/2004/02/skos/core#altLabel> "Polyacrylnitril"@de ,
-                                                                  "Polyacrylonitrile"@en .
-
-
-###  http://www.semanticweb.org/wahl/ontologies/2022/1/polymer#Polyaddition
-:Polyaddition rdf:type owl:Class ;
-              rdfs:subClassOf :FormationProcess .
-
-
-###  http://www.semanticweb.org/wahl/ontologies/2022/1/polymer#Polyaddukt
-:Polyaddukt rdf:type owl:Class ;
-            rdfs:subClassOf :PolymerGroup .
-
-
-###  http://www.semanticweb.org/wahl/ontologies/2022/1/polymer#PolyalkylenTerephthalate
-:PolyalkylenTerephthalate rdf:type owl:Class ;
-                          rdfs:subClassOf :PolymerGroup .
-
-
-###  http://www.semanticweb.org/wahl/ontologies/2022/1/polymer#Polyamide
-:Polyamide rdf:type owl:Class ;
-           rdfs:subClassOf :Thermoplast ,
-                           [ rdf:type owl:Restriction ;
-                             owl:onProperty :satisfies ;
-                             owl:someValuesFrom :TechnicalRequirement
-                           ] ,
-                           [ rdf:type owl:Restriction ;
-                             owl:onProperty :belongsTo ;
-                             owl:allValuesFrom :Polyamides
-                           ] ,
-                           [ rdf:type owl:Restriction ;
-                             owl:onProperty :createdUsing ;
-                             owl:allValuesFrom :Polycondensation
-                           ] ;
-           :polymerSymbol "PA" ;
-           <http://www.w3.org/2004/02/skos/core#altLabel> "Nylon"@en ,
-                                                          "Polyamid"@de ,
-                                                          "Polyamide"@en .
-
-
-###  http://www.semanticweb.org/wahl/ontologies/2022/1/polymer#Polyamide10.10
-:Polyamide10.10 rdf:type owl:Class ;
-                rdfs:subClassOf :Thermoplast ,
-                                [ rdf:type owl:Restriction ;
-                                  owl:onProperty :satisfies ;
-                                  owl:someValuesFrom :TechnicalRequirement
-                                ] ,
-                                [ rdf:type owl:Restriction ;
-                                  owl:onProperty :belongsTo ;
-                                  owl:allValuesFrom :Polyamides
-                                ] ,
-                                [ rdf:type owl:Restriction ;
-                                  owl:onProperty :createdBy ;
-                                  owl:allValuesFrom :Polycondensation
-                                ] ;
-                :polymerSymbol "PA10.10" ;
-                <http://www.w3.org/2004/02/skos/core#altLabel> "Polyamid 10.10"@de ,
-                                                               "Polyamide 10.10"@en .
-
-
-###  http://www.semanticweb.org/wahl/ontologies/2022/1/polymer#Polyamide10.12
-:Polyamide10.12 rdf:type owl:Class ;
-                rdfs:subClassOf :Thermoplast ,
-                                [ rdf:type owl:Restriction ;
-                                  owl:onProperty :satisfies ;
-                                  owl:someValuesFrom :TechnicalRequirement
-                                ] ,
-                                [ rdf:type owl:Restriction ;
-                                  owl:onProperty :belongsTo ;
-                                  owl:allValuesFrom :Polyamides
-                                ] ,
-                                [ rdf:type owl:Restriction ;
-                                  owl:onProperty :createdBy ;
-                                  owl:allValuesFrom :Polycondensation
-                                ] ;
-                :polymerSymbol "PA10.12" ;
-                <http://www.w3.org/2004/02/skos/core#altLabel> "Polyamid 10.12"@de ,
-                                                               "Polyamide 10.12"@en .
-
-
-###  http://www.semanticweb.org/wahl/ontologies/2022/1/polymer#Polyamide11
-:Polyamide11 rdf:type owl:Class ;
-             rdfs:subClassOf :Thermoplast ,
-                             [ rdf:type owl:Restriction ;
-                               owl:onProperty :satisfies ;
-                               owl:someValuesFrom :TechnicalRequirement
-                             ] ,
-                             [ rdf:type owl:Restriction ;
-                               owl:onProperty :belongsTo ;
-                               owl:allValuesFrom :Polyamides
-                             ] ,
-                             [ rdf:type owl:Restriction ;
-                               owl:onProperty :createdBy ;
-                               owl:allValuesFrom :Polycondensation
-                             ] ;
-             :polymerSymbol "PA11" ;
-             <http://www.w3.org/2004/02/skos/core#altLabel> "Polyamid 11"@de ,
-                                                            "Polyamide 11"@en .
-
-
-###  http://www.semanticweb.org/wahl/ontologies/2022/1/polymer#Polyamide12
-:Polyamide12 rdf:type owl:Class ;
-             rdfs:subClassOf :Thermoplast ,
-                             [ rdf:type owl:Restriction ;
-                               owl:onProperty :satisfies ;
-                               owl:someValuesFrom :TechnicalRequirement
-                             ] ,
-                             [ rdf:type owl:Restriction ;
-                               owl:onProperty :belongsTo ;
-                               owl:allValuesFrom :Polyamides
-                             ] ,
-                             [ rdf:type owl:Restriction ;
-                               owl:onProperty :createdBy ;
-                               owl:allValuesFrom :Polycondensation
-                             ] ;
-             :polymerSymbol "PA12" ;
-             <http://www.w3.org/2004/02/skos/core#altLabel> "Polyamid 12"@de ,
-                                                            "Polyamide 12"@en .
-
-
-###  http://www.semanticweb.org/wahl/ontologies/2022/1/polymer#Polyamide12.12
-:Polyamide12.12 rdf:type owl:Class ;
-                rdfs:subClassOf :Thermoplast ,
-                                [ rdf:type owl:Restriction ;
-                                  owl:onProperty :satisfies ;
-                                  owl:someValuesFrom :TechnicalRequirement
-                                ] ,
-                                [ rdf:type owl:Restriction ;
-                                  owl:onProperty :belongsTo ;
-                                  owl:allValuesFrom :Polyamides
-                                ] ,
-                                [ rdf:type owl:Restriction ;
-                                  owl:onProperty :createdBy ;
-                                  owl:allValuesFrom :Polycondensation
-                                ] ;
-                :polymerSymbol "PA12.12" ;
-                <http://www.w3.org/2004/02/skos/core#altLabel> "Polyamid 12.12"@de ,
-                                                               "Polyamide 12.12"@en .
-
-
-###  http://www.semanticweb.org/wahl/ontologies/2022/1/polymer#Polyamide4.6
-:Polyamide4.6 rdf:type owl:Class ;
-              rdfs:subClassOf :Thermoplast ,
-                              [ rdf:type owl:Restriction ;
-                                owl:onProperty :satisfies ;
-                                owl:someValuesFrom :TechnicalRequirement
-                              ] ,
-                              [ rdf:type owl:Restriction ;
-                                owl:onProperty :belongsTo ;
-                                owl:allValuesFrom :Polyamides
-                              ] ,
-                              [ rdf:type owl:Restriction ;
-                                owl:onProperty :createdBy ;
-                                owl:allValuesFrom :Polycondensation
-                              ] ;
-              :polymerSymbol "PA4.6" ;
-              <http://www.w3.org/2004/02/skos/core#altLabel> "Polyamid 4.6"@de ,
-                                                             "Polyamide 4.6"@en .
-
-
-###  http://www.semanticweb.org/wahl/ontologies/2022/1/polymer#Polyamide5.10
-:Polyamide5.10 rdf:type owl:Class ;
-               rdfs:subClassOf :Thermoplast ,
-                               [ rdf:type owl:Restriction ;
-                                 owl:onProperty :satisfies ;
-                                 owl:someValuesFrom :TechnicalRequirement
-                               ] ,
-                               [ rdf:type owl:Restriction ;
-                                 owl:onProperty :belongsTo ;
-                                 owl:allValuesFrom :Polyamides
-                               ] ,
-                               [ rdf:type owl:Restriction ;
-                                 owl:onProperty :createdBy ;
-                                 owl:allValuesFrom :Polycondensation
-                               ] ;
-               :polymerSymbol "PA5.10" ;
-               <http://www.w3.org/2004/02/skos/core#altLabel> "Polyamid 5.10"@de ,
-                                                              "Polyamide 5.10"@en .
-
-
-###  http://www.semanticweb.org/wahl/ontologies/2022/1/polymer#Polyamide6
-:Polyamide6 rdf:type owl:Class ;
-            rdfs:subClassOf :Thermoplast ,
-                            [ rdf:type owl:Restriction ;
-                              owl:onProperty :satisfies ;
-                              owl:someValuesFrom :TechnicalRequirement
-                            ] ,
-                            [ rdf:type owl:Restriction ;
-                              owl:onProperty :belongsTo ;
-                              owl:allValuesFrom :Polyamides
-                            ] ,
-                            [ rdf:type owl:Restriction ;
-                              owl:onProperty :createdBy ;
-                              owl:allValuesFrom :Polycondensation
-                            ] ;
-            :polymerSymbol "PA6" ;
-            rdfs:comment "Polycaprolactam is a Polymer from the group of the Polyamids."@en ;
-            <http://www.w3.org/2004/02/skos/core#altLabel> "Polyamid 6"@de ,
-                                                           "Polyamide 6"@en .
-
-
-###  http://www.semanticweb.org/wahl/ontologies/2022/1/polymer#Polyamide6.10
-:Polyamide6.10 rdf:type owl:Class ;
-               rdfs:subClassOf :Thermoplast ,
-                               [ rdf:type owl:Restriction ;
-                                 owl:onProperty :satisfies ;
-                                 owl:someValuesFrom :TechnicalRequirement
-                               ] ,
-                               [ rdf:type owl:Restriction ;
-                                 owl:onProperty :belongsTo ;
-                                 owl:allValuesFrom :Polyamides
-                               ] ,
-                               [ rdf:type owl:Restriction ;
-                                 owl:onProperty :createdBy ;
-                                 owl:allValuesFrom :Polycondensation
-                               ] ;
-               :polymerSymbol "PA6.10" ;
-               <http://www.w3.org/2004/02/skos/core#altLabel> "Polyamid 6.10"@de ,
-                                                              "Polyamide 6.10"@en .
-
-
-###  http://www.semanticweb.org/wahl/ontologies/2022/1/polymer#Polyamide6.12
-:Polyamide6.12 rdf:type owl:Class ;
-               rdfs:subClassOf :Thermoplast ,
-                               [ rdf:type owl:Restriction ;
-                                 owl:onProperty :satisfies ;
-                                 owl:someValuesFrom :TechnicalRequirement
-                               ] ,
-                               [ rdf:type owl:Restriction ;
-                                 owl:onProperty :belongsTo ;
-                                 owl:allValuesFrom :Polyamides
-                               ] ,
-                               [ rdf:type owl:Restriction ;
-                                 owl:onProperty :createdBy ;
-                                 owl:allValuesFrom :Polycondensation
-                               ] ;
-               :polymerSymbol "PA6.12" ;
-               <http://www.w3.org/2004/02/skos/core#altLabel> "Polyamid 6.12"@de ,
-                                                              "Polyamide 6.12"@en .
-
-
-###  http://www.semanticweb.org/wahl/ontologies/2022/1/polymer#Polyamide6.6
-:Polyamide6.6 rdf:type owl:Class ;
-              rdfs:subClassOf :Thermoplast ,
-                              [ rdf:type owl:Restriction ;
-                                owl:onProperty :satisfies ;
-                                owl:someValuesFrom :TechnicalRequirement
-                              ] ,
-                              [ rdf:type owl:Restriction ;
-                                owl:onProperty :belongsTo ;
-                                owl:allValuesFrom :Polyamides
-                              ] ,
-                              [ rdf:type owl:Restriction ;
-                                owl:onProperty :createdBy ;
-                                owl:allValuesFrom :Polycondensation
-                              ] ;
-              :polymerSymbol "PA6.6" ;
-              <http://www.w3.org/2004/02/skos/core#altLabel> "Polyamid 6.6"@de ,
-                                                             "Polyamide 6.6"@en .
-
-
-###  http://www.semanticweb.org/wahl/ontologies/2022/1/polymer#Polyamides
-:Polyamides rdf:type owl:Class ;
-            rdfs:subClassOf :PolymerGroup .
-
-
-###  http://www.semanticweb.org/wahl/ontologies/2022/1/polymer#Polyarylate
-:Polyarylate rdf:type owl:Class ;
-             rdfs:subClassOf :Thermoplast ,
-                             [ rdf:type owl:Restriction ;
-                               owl:onProperty :satisfies ;
-                               owl:someValuesFrom :TechnicalRequirement
-                             ] ,
-                             [ rdf:type owl:Restriction ;
-                               owl:onProperty :belongsTo ;
-                               owl:allValuesFrom :Polyester
-                             ] ,
-                             [ rdf:type owl:Restriction ;
-                               owl:onProperty :createdBy ;
-                               owl:allValuesFrom :Polycondensation
-                             ] ;
-             :polymerSymbol "PAR" ;
-             <http://www.w3.org/2004/02/skos/core#altLabel> "Polyarylat"@de ,
-                                                            "Polyarylate"@en .
-
-
-###  http://www.semanticweb.org/wahl/ontologies/2022/1/polymer#Polybutene
-:Polybutene rdf:type owl:Class ;
-            rdfs:subClassOf :Thermoplast ,
-                            [ rdf:type owl:Restriction ;
-                              owl:onProperty :satisfies ;
-                              owl:someValuesFrom :TechnicalRequirement
-                            ] ,
-                            [ rdf:type owl:Restriction ;
-                              owl:onProperty :belongsTo ;
-                              owl:allValuesFrom :Polyolefine
-                            ] ,
-                            [ rdf:type owl:Restriction ;
-                              owl:onProperty :createdBy ;
-                              owl:allValuesFrom :Polymerisation
-                            ] ;
-            :polymerSymbol "PB" ;
-            <http://www.w3.org/2004/02/skos/core#altLabel> "Polybuten"@de ,
-                                                           "Polybutene"@en .
-
-
-###  http://www.semanticweb.org/wahl/ontologies/2022/1/polymer#PolybutyleneTerephthalate
-:PolybutyleneTerephthalate rdf:type owl:Class ;
-                           rdfs:subClassOf :Thermoplast ,
-                                           [ rdf:type owl:Restriction ;
-                                             owl:onProperty :satisfies ;
-                                             owl:someValuesFrom :StandardRequirement
-                                           ] ,
-                                           [ rdf:type owl:Restriction ;
-                                             owl:onProperty :belongsTo ;
-                                             owl:allValuesFrom :Polyester
-                                           ] ,
-                                           [ rdf:type owl:Restriction ;
-                                             owl:onProperty :createdBy ;
-                                             owl:allValuesFrom :Polycondensation
-                                           ] ;
-                           :polymerSymbol "PBT" ;
-                           <http://www.w3.org/2004/02/skos/core#altLabel> "Polybutylene Terephthalate"@en ,
-                                                                          "Polybutylenterephthalat"@de .
-
-
-###  http://www.semanticweb.org/wahl/ontologies/2022/1/polymer#Polycarbonate
-:Polycarbonate rdf:type owl:Class ;
-               rdfs:subClassOf :Thermoplast ,
-                               [ rdf:type owl:Restriction ;
-                                 owl:onProperty :satisfies ;
-                                 owl:someValuesFrom :TechnicalRequirement
-                               ] ,
-                               [ rdf:type owl:Restriction ;
-                                 owl:onProperty :belongsTo ;
-                                 owl:allValuesFrom :Styrolpolymer
-                               ] ,
-                               [ rdf:type owl:Restriction ;
-                                 owl:onProperty :createdBy ;
-                                 owl:allValuesFrom :Polycondensation
-                               ] ;
-               :polymerSymbol "PC" ;
-               <http://www.w3.org/2004/02/skos/core#altLabel> "Polycarbonat"@de ,
-                                                              "Polycarbonate"@en .
-
-
-###  http://www.semanticweb.org/wahl/ontologies/2022/1/polymer#Polycondensation
-:Polycondensation rdf:type owl:Class ;
-                  rdfs:subClassOf :FormationProcess .
-
-
-###  http://www.semanticweb.org/wahl/ontologies/2022/1/polymer#Polyester
-:Polyester rdf:type owl:Class ;
-           rdfs:subClassOf :PolymerGroup .
-
-
-###  http://www.semanticweb.org/wahl/ontologies/2022/1/polymer#Polyetheretherketone
-:Polyetheretherketone rdf:type owl:Class ;
-                      rdfs:subClassOf :Thermoplast ,
-                                      [ rdf:type owl:Restriction ;
-                                        owl:onProperty :satisfies ;
-                                        owl:someValuesFrom :HighPerformanceRequirement
-                                      ] ,
-                                      [ rdf:type owl:Restriction ;
-                                        owl:onProperty :belongsTo ;
-                                        owl:allValuesFrom :Polyetherketone
-                                      ] ,
-                                      [ rdf:type owl:Restriction ;
-                                        owl:onProperty :createdBy ;
-                                        owl:allValuesFrom :Polycondensation
-                                      ] ;
-                      :polymerSymbol "PEEK" ;
-                      <http://www.w3.org/2004/02/skos/core#altLabel> "Polyetheretherketon"@de ,
-                                                                     "Polyetheretherketone"@en .
-
-
-###  http://www.semanticweb.org/wahl/ontologies/2022/1/polymer#Polyetherimide
-:Polyetherimide rdf:type owl:Class ;
-                rdfs:subClassOf :Thermoplast ,
-                                [ rdf:type owl:Restriction ;
-                                  owl:onProperty :satisfies ;
-                                  owl:someValuesFrom :TechnicalRequirement
-                                ] ,
-                                [ rdf:type owl:Restriction ;
-                                  owl:onProperty :belongsTo ;
-                                  owl:allValuesFrom :Polyimides
-                                ] ,
-                                [ rdf:type owl:Restriction ;
-                                  owl:onProperty :createdBy ;
-                                  owl:allValuesFrom :Polycondensation
-                                ] ;
-                :polymerSymbol "PEI" ;
-                <http://www.w3.org/2004/02/skos/core#altLabel> "Polyetherimid"@de ,
-                                                               "Polyetherimide"@en .
-
-
-###  http://www.semanticweb.org/wahl/ontologies/2022/1/polymer#Polyetherketone
-:Polyetherketone rdf:type owl:Class ;
-                 rdfs:subClassOf :PolymerGroup .
-
-
-###  http://www.semanticweb.org/wahl/ontologies/2022/1/polymer#Polyethersulfone
-:Polyethersulfone rdf:type owl:Class ;
-                  rdfs:subClassOf :Thermoplast ,
-                                  [ rdf:type owl:Restriction ;
-                                    owl:onProperty :satisfies ;
-                                    owl:someValuesFrom :HighPerformanceRequirement
-                                  ] ,
-                                  [ rdf:type owl:Restriction ;
-                                    owl:onProperty :belongsTo ;
-                                    owl:allValuesFrom :Polysulfones
-                                  ] ,
-                                  [ rdf:type owl:Restriction ;
-                                    owl:onProperty :createdBy ;
-                                    owl:allValuesFrom :Polycondensation
-                                  ] ;
-                  :polymerSymbol "PES" ;
-                  <http://www.w3.org/2004/02/skos/core#altLabel> "Polyethersulfon"@de ,
-                                                                 "Polyethersulfone"@en .
-
-
-###  http://www.semanticweb.org/wahl/ontologies/2022/1/polymer#Polyethylene
-:Polyethylene rdf:type owl:Class ;
-              rdfs:subClassOf :Thermoplast ,
-                              [ rdf:type owl:Restriction ;
-                                owl:onProperty :satisfies ;
-                                owl:someValuesFrom :StandardRequirement
-                              ] ,
-                              [ rdf:type owl:Restriction ;
-                                owl:onProperty :belongsTo ;
-                                owl:allValuesFrom :Polyolefine
-                              ] ,
-                              [ rdf:type owl:Restriction ;
-                                owl:onProperty :createdBy ;
-                                owl:allValuesFrom :Polymerisation
-                              ] ;
-              :polymerSymbol "PE" ;
-              <http://www.w3.org/2004/02/skos/core#altLabel> "Polyethylen"@de ,
-                                                             "Polyethylene"@en .
-
-
-###  http://www.semanticweb.org/wahl/ontologies/2022/1/polymer#PolyethyleneTerephthalate
-:PolyethyleneTerephthalate rdf:type owl:Class ;
-                           rdfs:subClassOf :Thermoplast ,
-                                           [ rdf:type owl:Restriction ;
-                                             owl:onProperty :satisfies ;
-                                             owl:someValuesFrom :TechnicalRequirement
-                                           ] ,
-                                           [ rdf:type owl:Restriction ;
-                                             owl:onProperty :belongsTo ;
-                                             owl:allValuesFrom :PolyalkylenTerephthalate
-                                           ] ,
-                                           [ rdf:type owl:Restriction ;
-                                             owl:onProperty :createdBy ;
-                                             owl:allValuesFrom :Polycondensation
-                                           ] ;
-                           :polymerSymbol "PET" ;
-                           <http://www.w3.org/2004/02/skos/core#altLabel> "Polyethylene Terephthalate"@en ,
-                                                                          "Polyethylenterephthalat"@de .
-
-
-###  http://www.semanticweb.org/wahl/ontologies/2022/1/polymer#Polyhydroxybutyrate
-:Polyhydroxybutyrate rdf:type owl:Class ;
-                     rdfs:subClassOf :Thermoplast ,
-                                     [ rdf:type owl:Restriction ;
-                                       owl:onProperty :satisfies ;
-                                       owl:someValuesFrom :SpecialRequirement
-                                     ] ,
-                                     [ rdf:type owl:Restriction ;
-                                       owl:onProperty :belongsTo ;
-                                       owl:allValuesFrom :Polyester
-                                     ] ,
-                                     [ rdf:type owl:Restriction ;
-                                       owl:onProperty :createdBy ;
-                                       owl:allValuesFrom :Polycondensation
-                                     ] ;
-                     :polymerSymbol "PHB" ;
-                     <http://www.w3.org/2004/02/skos/core#altLabel> "Polyhydroxybutyrat"@de ,
-                                                                    "Polyhydroxybutyrate"@en .
-
-
-###  http://www.semanticweb.org/wahl/ontologies/2022/1/polymer#Polyimide
-:Polyimide rdf:type owl:Class ;
-           rdfs:subClassOf :Thermoplast ,
-                           [ rdf:type owl:Restriction ;
-                             owl:onProperty :satisfies ;
-                             owl:someValuesFrom :TechnicalRequirement
-                           ] ,
-                           [ rdf:type owl:Restriction ;
-                             owl:onProperty :belongsTo ;
-                             owl:allValuesFrom :Polyimides
-                           ] ,
-                           [ rdf:type owl:Restriction ;
-                             owl:onProperty :createdBy ;
-                             owl:allValuesFrom :Polycondensation
-                           ] ;
-           :polymerSymbol "PI" ;
-           <http://www.w3.org/2004/02/skos/core#altLabel> "Polyimid"@de ,
-                                                          "Polyimide"@en .
-
-
-###  http://www.semanticweb.org/wahl/ontologies/2022/1/polymer#Polyimides
-:Polyimides rdf:type owl:Class ;
-            rdfs:subClassOf :PolymerGroup .
-
-
-###  http://www.semanticweb.org/wahl/ontologies/2022/1/polymer#Polylactide
-:Polylactide rdf:type owl:Class ;
-             rdfs:subClassOf :Thermoplast ,
-                             [ rdf:type owl:Restriction ;
-                               owl:onProperty :satisfies ;
-                               owl:someValuesFrom :SpecialRequirement
-                             ] ,
-                             [ rdf:type owl:Restriction ;
-                               owl:onProperty :belongsTo ;
-                               owl:allValuesFrom :Polyester
-                             ] ,
-                             [ rdf:type owl:Restriction ;
-                               owl:onProperty :createdBy ;
-                               owl:allValuesFrom :Polycondensation
-                             ] ;
-             :polymerSymbol "PLA" ;
-             <http://www.w3.org/2004/02/skos/core#altLabel> "Polylactic Acid"@en ,
-                                                            "Polylactid"@de ,
-                                                            "Polylactide"@en ,
-                                                            "Polymilchsäure"@de .
-
-
-###  http://www.semanticweb.org/wahl/ontologies/2022/1/polymer#Polymer
-:Polymer rdf:type owl:Class .
-
-
-###  http://www.semanticweb.org/wahl/ontologies/2022/1/polymer#PolymerGroup
-:PolymerGroup rdf:type owl:Class .
-
-
-###  http://www.semanticweb.org/wahl/ontologies/2022/1/polymer#Polymerisation
-:Polymerisation rdf:type owl:Class ;
-                rdfs:subClassOf :FormationProcess .
-
-
-###  http://www.semanticweb.org/wahl/ontologies/2022/1/polymer#PolymethylMethacrylate
-:PolymethylMethacrylate rdf:type owl:Class ;
-                        rdfs:subClassOf :Thermoplast ,
-                                        [ rdf:type owl:Restriction ;
-                                          owl:onProperty :satisfies ;
-                                          owl:someValuesFrom :StandardRequirement
-                                        ] ,
-                                        [ rdf:type owl:Restriction ;
-                                          owl:onProperty :belongsTo ;
-                                          owl:allValuesFrom :Polyacrylate
-                                        ] ,
-                                        [ rdf:type owl:Restriction ;
-                                          owl:onProperty :createdBy ;
-                                          owl:allValuesFrom :Polymerisation
-                                        ] ;
-                        :polymerSymbol "PMMA" ;
-                        <http://www.w3.org/2004/02/skos/core#altLabel> "Polymethyl Methacrylate"@en ,
-                                                                       "Polymethylmethacrylat"@de .
-
-
-###  http://www.semanticweb.org/wahl/ontologies/2022/1/polymer#Polyolefine
-:Polyolefine rdf:type owl:Class ;
-             rdfs:subClassOf :PolymerGroup .
-
-
-###  http://www.semanticweb.org/wahl/ontologies/2022/1/polymer#Polyoxymethylene
-:Polyoxymethylene rdf:type owl:Class ;
-                  rdfs:subClassOf :Thermoplast ,
-                                  [ rdf:type owl:Restriction ;
-                                    owl:onProperty :satisfies ;
-                                    owl:someValuesFrom :TechnicalRequirement
-                                  ] ,
-                                  [ rdf:type owl:Restriction ;
-                                    owl:onProperty :belongsTo ;
-                                    owl:allValuesFrom :Polyacetal
-                                  ] ,
-                                  [ rdf:type owl:Restriction ;
-                                    owl:onProperty :createdBy ;
-                                    owl:allValuesFrom :Polymerisation
-                                  ] ;
-                  :polymerSymbol "POM" ;
-                  <http://www.w3.org/2004/02/skos/core#altLabel> "Polyacetal"@de ,
-                                                                 "Polyacetal"@en ,
-                                                                 "Polyoxymethylen"@de ,
-                                                                 "Polyoxymethylene"@en .
-
-
-###  http://www.semanticweb.org/wahl/ontologies/2022/1/polymer#PolyphenyleneSulfide
-:PolyphenyleneSulfide rdf:type owl:Class ;
-                      rdfs:subClassOf :Thermoplast ,
-                                      [ rdf:type owl:Restriction ;
-                                        owl:onProperty :satisfies ;
-                                        owl:someValuesFrom :HighPerformanceRequirement
-                                      ] ,
-                                      [ rdf:type owl:Restriction ;
-                                        owl:onProperty :belongsTo ;
-                                        owl:allValuesFrom :Polysulfones
-                                      ] ,
-                                      [ rdf:type owl:Restriction ;
-                                        owl:onProperty :createdBy ;
-                                        owl:allValuesFrom :Polycondensation
-                                      ] ;
-                      :polymerSymbol "PPS" ;
-                      <http://www.w3.org/2004/02/skos/core#altLabel> "Polyphenylene Sulfide"@en ,
-                                                                     "Polyphenylsulfid"@de .
-
-
-###  http://www.semanticweb.org/wahl/ontologies/2022/1/polymer#Polyphenylether
-:Polyphenylether rdf:type owl:Class ;
-                 rdfs:subClassOf :Thermoplast ,
-                                 [ rdf:type owl:Restriction ;
-                                   owl:onProperty :satisfies ;
-                                   owl:someValuesFrom :HighPerformanceRequirement
-                                 ] ,
-                                 [ rdf:type owl:Restriction ;
-                                   owl:onProperty :belongsTo ;
-                                   owl:allValuesFrom :Polyester
-                                 ] ,
-                                 [ rdf:type owl:Restriction ;
-                                   owl:onProperty :createdBy ;
-                                   owl:allValuesFrom :Polycondensation
-                                 ] ;
-                 :polymerSymbol "PPE" ,
-                                "PPO" ;
-                 <http://www.w3.org/2004/02/skos/core#altLabel> "Polyphenylene Oxide"@en ,
-                                                                "Polyphenylenoxid"@de ,
-                                                                "Polyphenylether"@de ,
-                                                                "Polyphenylether"@en .
-
-
-###  http://www.semanticweb.org/wahl/ontologies/2022/1/polymer#PolyphenyletherSulfone
-:PolyphenyletherSulfone rdf:type owl:Class ;
-                        rdfs:subClassOf :Thermoplast ,
-                                        [ rdf:type owl:Restriction ;
-                                          owl:onProperty :satisfies ;
-                                          owl:someValuesFrom :HighPerformanceRequirement
-                                        ] ,
-                                        [ rdf:type owl:Restriction ;
-                                          owl:onProperty :belongsTo ;
-                                          owl:allValuesFrom :Polysulfones
-                                        ] ,
-                                        [ rdf:type owl:Restriction ;
-                                          owl:onProperty :createdBy ;
-                                          owl:allValuesFrom :Polycondensation
-                                        ] ;
-                        :polymerSymbol "PPSU" ;
-                        <http://www.w3.org/2004/02/skos/core#altLabel> "Polyphenylether Sulfone"@en ,
-                                                                       "Polyphenylethersulfon"@de .
-
-
-###  http://www.semanticweb.org/wahl/ontologies/2022/1/polymer#Polyphthalamide
-:Polyphthalamide rdf:type owl:Class ;
-                 rdfs:subClassOf :Thermoplast ,
-                                 [ rdf:type owl:Restriction ;
-                                   owl:onProperty :satisfies ;
-                                   owl:someValuesFrom :TechnicalRequirement
-                                 ] ,
-                                 [ rdf:type owl:Restriction ;
-                                   owl:onProperty :belongsTo ;
-                                   owl:allValuesFrom :Polyamides
-                                 ] ,
-                                 [ rdf:type owl:Restriction ;
-                                   owl:onProperty :createdBy ;
-                                   owl:allValuesFrom :Polycondensation
-                                 ] ;
-                 :polymerSymbol "PPA" ;
-                 <http://www.w3.org/2004/02/skos/core#altLabel> "Polyphthalamid"@de ,
-                                                                "Polyphthalamide"@en .
-
-
-###  http://www.semanticweb.org/wahl/ontologies/2022/1/polymer#Polypropylene
-:Polypropylene rdf:type owl:Class ;
-               rdfs:subClassOf :Thermoplast ,
-                               [ rdf:type owl:Restriction ;
-                                 owl:onProperty :satisfies ;
-                                 owl:someValuesFrom :StandardRequirement
-                               ] ,
-                               [ rdf:type owl:Restriction ;
-                                 owl:onProperty :belongsTo ;
-                                 owl:allValuesFrom :Polyolefine
-                               ] ,
-                               [ rdf:type owl:Restriction ;
-                                 owl:onProperty :createdBy ;
-                                 owl:allValuesFrom :Polymerisation
-                               ] ;
-               :polymerSymbol "PP" ;
-               <http://www.w3.org/2004/02/skos/core#altLabel> "Polypropylen"@de ,
-                                                              "Polypropylene"@en .
-
-
-###  http://www.semanticweb.org/wahl/ontologies/2022/1/polymer#PolypropyleneCopolymer
-:PolypropyleneCopolymer rdf:type owl:Class ;
-                        rdfs:subClassOf :Thermoplast ,
-                                        [ rdf:type owl:Restriction ;
-                                          owl:onProperty :satisfies ;
-                                          owl:someValuesFrom :StandardRequirement
-                                        ] ,
-                                        [ rdf:type owl:Restriction ;
-                                          owl:onProperty :belongsTo ;
-                                          owl:allValuesFrom :Polyolefine
-                                        ] ,
-                                        [ rdf:type owl:Restriction ;
-                                          owl:onProperty :createdBy ;
-                                          owl:allValuesFrom :Copolymerisation
-                                        ] ;
-                        :polymerSymbol "PP-Copo" ;
-                        <http://www.w3.org/2004/02/skos/core#altLabel> "Polypropylen-Copolymer"@de ,
-                                                                       "Polypropylene Copolymer"@en .
-
-
-###  http://www.semanticweb.org/wahl/ontologies/2022/1/polymer#Polystyrene
-:Polystyrene rdf:type owl:Class ;
-             rdfs:subClassOf :Thermoplast ,
-                             [ rdf:type owl:Restriction ;
-                               owl:onProperty :satisfies ;
-                               owl:someValuesFrom :StandardRequirement
-                             ] ,
-                             [ rdf:type owl:Restriction ;
-                               owl:onProperty :belongsTo ;
-                               owl:allValuesFrom :Styrolpolymer
-                             ] ,
-                             [ rdf:type owl:Restriction ;
-                               owl:onProperty :createdBy ;
-                               owl:allValuesFrom :Polymerisation
-                             ] ;
-             :polymerSymbol "PS" ;
-             <http://www.w3.org/2004/02/skos/core#altLabel> "Polystyrene"@en ,
-                                                            "Polystyrol"@de .
-
-
-###  http://www.semanticweb.org/wahl/ontologies/2022/1/polymer#PolystyreneFoamed
-:PolystyreneFoamed rdf:type owl:Class ;
-                   rdfs:subClassOf :Thermoplast ,
-                                   [ rdf:type owl:Restriction ;
-                                     owl:onProperty :satisfies ;
-                                     owl:someValuesFrom :StandardRequirement
-                                   ] ,
-                                   [ rdf:type owl:Restriction ;
-                                     owl:onProperty :belongsTo ;
-                                     owl:allValuesFrom :Styrolpolymer
-                                   ] ,
-                                   [ rdf:type owl:Restriction ;
-                                     owl:onProperty :createdBy ;
-                                     owl:allValuesFrom :Polymerisation
-                                   ] ;
-                   :polymerSymbol "EPS" ,
-                                  "PSE" ;
-                   <http://www.w3.org/2004/02/skos/core#altLabel> "Polysterene foamed"@en ,
-                                                                  "Polystyrene expanded"@en ,
-                                                                  "Polystyrol expandiert"@de ,
-                                                                  "Polystyrol geschäumt"@de .
-
-
-###  http://www.semanticweb.org/wahl/ontologies/2022/1/polymer#Polysulfone
-:Polysulfone rdf:type owl:Class ;
-             rdfs:subClassOf :Thermoplast ,
-                             [ rdf:type owl:Restriction ;
-                               owl:onProperty :satisfies ;
-                               owl:someValuesFrom :HighPerformanceRequirement
-                             ] ,
-                             [ rdf:type owl:Restriction ;
-                               owl:onProperty :belongsTo ;
-                               owl:allValuesFrom :Polysulfones
-                             ] ,
-                             [ rdf:type owl:Restriction ;
-                               owl:onProperty :createdBy ;
-                               owl:allValuesFrom :Polycondensation
-                             ] ;
-             :polymerSymbol "PSU" ;
-             <http://www.w3.org/2004/02/skos/core#altLabel> "Polysulfon"@de ,
-                                                            "Polysulfone"@en .
-
-
-###  http://www.semanticweb.org/wahl/ontologies/2022/1/polymer#Polysulfones
-:Polysulfones rdf:type owl:Class ;
-              rdfs:subClassOf :PolymerGroup .
-
-
-###  http://www.semanticweb.org/wahl/ontologies/2022/1/polymer#Polytetrafluoroethylene
-:Polytetrafluoroethylene rdf:type owl:Class ;
-                         rdfs:subClassOf :Thermoplast ,
-                                         [ rdf:type owl:Restriction ;
-                                           owl:onProperty :satisfies ;
-                                           owl:someValuesFrom :HighPerformanceRequirement
-                                         ] ,
-                                         [ rdf:type owl:Restriction ;
-                                           owl:onProperty :belongsTo ;
-                                           owl:allValuesFrom :Fluorpolymer
-                                         ] ,
-                                         [ rdf:type owl:Restriction ;
-                                           owl:onProperty :createdBy ;
-                                           owl:allValuesFrom :Polymerisation
-                                         ] ;
-                         :polymerSymbol "PTFE" ;
-                         <http://www.w3.org/2004/02/skos/core#altLabel> "Polytetrafluorethylen"@de ,
-                                                                        "Polytetrafluoroethylene"@en .
-
-
-###  http://www.semanticweb.org/wahl/ontologies/2022/1/polymer#Polyurethan
-:Polyurethan rdf:type owl:Class ;
-             rdfs:subClassOf :Duroplast ,
-                             :Elastomer ,
-                             :Thermoplast ,
-                             [ rdf:type owl:Restriction ;
-                               owl:onProperty :satisfies ;
-                               owl:someValuesFrom :TechnicalRequirement
-                             ] ,
-                             [ rdf:type owl:Restriction ;
-                               owl:onProperty :belongsTo ;
-                               owl:allValuesFrom :Polyaddukt
-                             ] ,
-                             [ rdf:type owl:Restriction ;
-                               owl:onProperty :createdBy ;
-                               owl:allValuesFrom :Copolymerisation
-                             ] ;
-             :polymerSymbol "PU" ;
-             <http://www.w3.org/2004/02/skos/core#altLabel> "Polyurethan"@de ,
-                                                            "Polyurethane"@en .
-
-
-###  http://www.semanticweb.org/wahl/ontologies/2022/1/polymer#PolyvinylChloride
-:PolyvinylChloride rdf:type owl:Class ;
-                   rdfs:subClassOf :Thermoplast ,
-                                   [ rdf:type owl:Restriction ;
-                                     owl:onProperty :satisfies ;
-                                     owl:someValuesFrom :StandardRequirement
-                                   ] ,
-                                   [ rdf:type owl:Restriction ;
-                                     owl:onProperty :belongsTo ;
-                                     owl:allValuesFrom :Vinylpolymer
-                                   ] ,
-                                   [ rdf:type owl:Restriction ;
-                                     owl:onProperty :createdBy ;
-                                     owl:allValuesFrom :Polymerisation
-                                   ] ;
-                   :polymerSymbol "PVC" ;
-                   <http://www.w3.org/2004/02/skos/core#altLabel> "Polyvinyl Chloride"@en ,
-                                                                  "Polyvinylchlorid"@de .
-
-
-###  http://www.semanticweb.org/wahl/ontologies/2022/1/polymer#PolyvinylideneFlouride
-:PolyvinylideneFlouride rdf:type owl:Class ;
-                        rdfs:subClassOf :Thermoplast ,
-                                        [ rdf:type owl:Restriction ;
-                                          owl:onProperty :satisfies ;
-                                          owl:someValuesFrom :HighPerformanceRequirement
-                                        ] ,
-                                        [ rdf:type owl:Restriction ;
-                                          owl:onProperty :belongsTo ;
-                                          owl:allValuesFrom :Fluorpolymer
-                                        ] ,
-                                        [ rdf:type owl:Restriction ;
-                                          owl:onProperty :createdBy ;
-                                          owl:allValuesFrom :Polymerisation
-                                        ] ;
-                        :polymerSymbol "PVDF" ;
-                        <http://www.w3.org/2004/02/skos/core#altLabel> "Polyvinylidene Flouride"@en ,
-                                                                       "Polyvinylidenfluorid"@de .
-
-
-###  http://www.semanticweb.org/wahl/ontologies/2022/1/polymer#ReinforcingMaterial
-:ReinforcingMaterial rdf:type owl:Class ;
-                     rdfs:subClassOf :Additive .
-
-
-###  http://www.semanticweb.org/wahl/ontologies/2022/1/polymer#Rheological
-:Rheological rdf:type owl:Class ;
-             rdfs:subClassOf :Attribute .
-
-
-###  http://www.semanticweb.org/wahl/ontologies/2022/1/polymer#SpecialRequirement
-:SpecialRequirement rdf:type owl:Class ;
-                    rdfs:subClassOf :ApplicationRequirements .
-
-
-###  http://www.semanticweb.org/wahl/ontologies/2022/1/polymer#Standard
-:Standard rdf:type owl:Class .
-
-
-###  http://www.semanticweb.org/wahl/ontologies/2022/1/polymer#StandardRequirement
-:StandardRequirement rdf:type owl:Class ;
-                     rdfs:subClassOf :ApplicationRequirements .
-
-
-###  http://www.semanticweb.org/wahl/ontologies/2022/1/polymer#StyreneAcrylonitrileCopolymer
-:StyreneAcrylonitrileCopolymer rdf:type owl:Class ;
-                               rdfs:subClassOf :Thermoplast ,
-                                               [ rdf:type owl:Restriction ;
-                                                 owl:onProperty :satisfies ;
-                                                 owl:someValuesFrom :StandardRequirement
-                                               ] ,
-                                               [ rdf:type owl:Restriction ;
-                                                 owl:onProperty :belongsTo ;
-                                                 owl:allValuesFrom :Styrolpolymer
-                                               ] ,
-                                               [ rdf:type owl:Restriction ;
-                                                 owl:onProperty :createdBy ;
-                                                 owl:allValuesFrom :Copolymerisation
-                                               ] ;
-                               :polymerSymbol "SAN" ;
-                               <http://www.w3.org/2004/02/skos/core#altLabel> "Styrene-Acrylonitrile Copolymer"@en ,
-                                                                              "Styrol-Acrylnitril-Copolymerisat"@de .
-
-
-###  http://www.semanticweb.org/wahl/ontologies/2022/1/polymer#StyreneButadiene
-:StyreneButadiene rdf:type owl:Class ;
-                  rdfs:subClassOf :Thermoplast ,
-                                  [ rdf:type owl:Restriction ;
-                                    owl:onProperty :satisfies ;
-                                    owl:someValuesFrom :StandardRequirement
-                                  ] ,
-                                  [ rdf:type owl:Restriction ;
-                                    owl:onProperty :belongsTo ;
-                                    owl:allValuesFrom :Styrolpolymer
-                                  ] ,
-                                  [ rdf:type owl:Restriction ;
-                                    owl:onProperty :createdBy ;
-                                    owl:allValuesFrom :Copolymerisation
-                                  ] ;
-                  :polymerSymbol "SB" ;
-                  <http://www.w3.org/2004/02/skos/core#altLabel> "Styrene-Butadiene"@en ,
-                                                                 "Styrol-Butadien"@de .
-
-
-###  http://www.semanticweb.org/wahl/ontologies/2022/1/polymer#StyreneButadieneRubber
-:StyreneButadieneRubber rdf:type owl:Class ;
-                        rdfs:subClassOf :Elastomer ,
-                                        [ rdf:type owl:Restriction ;
-                                          owl:onProperty :belongsTo ;
-                                          owl:allValuesFrom :Styrolpolymer
-                                        ] ,
-                                        [ rdf:type owl:Restriction ;
-                                          owl:onProperty :createdUsing ;
-                                          owl:allValuesFrom :Copolymerisation
-                                        ] ;
-                        :polymerSymbol "SBR" ;
-                        <http://www.w3.org/2004/02/skos/core#altLabel> "Styrene-Butadiene Rubber"@en ,
-                                                                       "Styrol-Butadien-Kautschuk"@de .
-
-
-###  http://www.semanticweb.org/wahl/ontologies/2022/1/polymer#Styrolpolymer
-:Styrolpolymer rdf:type owl:Class ;
-               rdfs:subClassOf :PolymerGroup .
-
-
-###  http://www.semanticweb.org/wahl/ontologies/2022/1/polymer#TechnicalRequirement
-:TechnicalRequirement rdf:type owl:Class ;
-                      rdfs:subClassOf :ApplicationRequirements .
-
-
-###  http://www.semanticweb.org/wahl/ontologies/2022/1/polymer#Thermal
-:Thermal rdf:type owl:Class ;
-         rdfs:subClassOf :Attribute .
-
-
-###  http://www.semanticweb.org/wahl/ontologies/2022/1/polymer#ThermalStabilizer
-:ThermalStabilizer rdf:type owl:Class ;
-                   rdfs:subClassOf :Additive .
-
-
-###  http://www.semanticweb.org/wahl/ontologies/2022/1/polymer#Thermoplast
-:Thermoplast rdf:type owl:Class ;
-             rdfs:subClassOf :Polymer .
-
-
-###  http://www.semanticweb.org/wahl/ontologies/2022/1/polymer#UL
-:UL rdf:type owl:Class ;
-    rdfs:subClassOf :Standard .
-
-
-###  http://www.semanticweb.org/wahl/ontologies/2022/1/polymer#UltraHighMolecularWeightPolyethylene
-:UltraHighMolecularWeightPolyethylene rdf:type owl:Class ;
-                                      rdfs:subClassOf :Thermoplast ,
-                                                      [ rdf:type owl:Restriction ;
-                                                        owl:onProperty :satisfies ;
-                                                        owl:someValuesFrom :StandardRequirement
-                                                      ] ,
-                                                      [ rdf:type owl:Restriction ;
-                                                        owl:onProperty :belongsTo ;
-                                                        owl:allValuesFrom :Polyolefine
-                                                      ] ,
-                                                      [ rdf:type owl:Restriction ;
-                                                        owl:onProperty :createdBy ;
-                                                        owl:allValuesFrom :Polymerisation
-                                                      ] ;
-                                      :polymerSymbol "PE-UHMW" ;
-                                      <http://www.w3.org/2004/02/skos/core#altLabel> "Polyethylen mit ultrahoher Molmasse"@de ,
-                                                                                     "Ultra-high molecular weight Polyethylene"@en .
-
-
-###  http://www.semanticweb.org/wahl/ontologies/2022/1/polymer#Unit
-:Unit rdf:type owl:Class ;
-      owl:equivalentClass [ owl:intersectionOf ( :Unit
-                                                 [ rdf:type owl:Class ;
-                                                   owl:oneOf ( :MPa
-                                                               :N
-                                                               :km
-                                                               :m
-                                                               :percent
-                                                               <http://www.semanticweb.org/wahl/ontologies/2022/1/polymer#KJ/m2>
-                                                               <http://www.semanticweb.org/wahl/ontologies/2022/1/polymer#cm3/10min>
-                                                               <http://www.semanticweb.org/wahl/ontologies/2022/1/polymer#g/10min>
-                                                             )
-                                                 ]
-                                               ) ;
-                            rdf:type owl:Class
-                          ] ;
-      rdfs:comment "The unit used to measure a certain attribute. A set of Unit instances is used by a Standard and a Unit instance is referenced by an attribute. The set of Unit instances is set."@en .
-
-
-###  http://www.semanticweb.org/wahl/ontologies/2022/1/polymer#Vinylpolymer
-:Vinylpolymer rdf:type owl:Class ;
-              rdfs:subClassOf :PolymerGroup .
-
-
-###  http://www.semanticweb.org/wahl/ontologies/2022/1/polymer#WoodPlasticComposites
-:WoodPlasticComposites rdf:type owl:Class ;
-                       rdfs:subClassOf :Thermoplast ,
-                                       [ rdf:type owl:Restriction ;
-                                         owl:onProperty :satisfies ;
-                                         owl:someValuesFrom :StandardRequirement
-                                       ] ;
-                       :polymerSymbol "WPC" ;
-                       <http://www.w3.org/2004/02/skos/core#altLabel> "Holz-Kunststoff-Verbundwerkstoffe"@de ,
-                                                                      "Wood-plastic Composites"@en .
+###  http://wue.plastikg.de/Value_Type
+<http://wue.plastikg.de/Value_Type> rdf:type owl:Class ;
+                                    rdfs:subClassOf owl:Thing ;
+                                    rdfs:comment "A Value_Type is used to define the interpretation of an attribute value. The set of Value_Types is finite."^^xsd:string ;
+                                    rdfs:label "Value_Type" .
 
 
 #################################################################
 #    Individuals
 #################################################################
 
-###  http://www.semanticweb.org/wahl/ontologies/2022/1/polymer#MPa
-:MPa rdf:type owl:NamedIndividual ,
-              :Unit .
+###  http://wue.plastikg.de/ALBA_Recycling_GmbH
+<http://wue.plastikg.de/ALBA_Recycling_GmbH> rdf:type owl:NamedIndividual ,
+                                                      <http://wue.plastikg.de/Company> ;
+                                             rdfs:label "ALBA_Recycling_GmbH" .
 
 
-###  http://www.semanticweb.org/wahl/ontologies/2022/1/polymer#N
-:N rdf:type owl:NamedIndividual ,
-            :Unit .
+###  http://wue.plastikg.de/Categorical
+<http://wue.plastikg.de/Categorical> rdf:type owl:NamedIndividual ,
+                                              <http://wue.plastikg.de/Value_Type> ;
+                                     rdfs:label "Categorical" .
 
 
-###  http://www.semanticweb.org/wahl/ontologies/2022/1/polymer#km
-:km rdf:type owl:NamedIndividual ,
-             :Unit .
+###  http://wue.plastikg.de/DINEN15343
+<http://wue.plastikg.de/DINEN15343> rdf:type owl:NamedIndividual ,
+                                             <http://wue.plastikg.de/DINStandard> ;
+                                    <http://wue.plastikg.de/title> "Plastics –Recycled Plastics –Plastics recycling traceability and assessment of conformity and recycled content"^^xsd:string ;
+                                    <http://wue.plastikg.de/title_de> "Kunststoffe –Kunststoff-Rezyklate –Rückverfolgbarkeit bei der Kunststoffverwertung und Bewertung derKonformität und des Rezyklatgehalts"^^xsd:string ;
+                                    <http://wue.plastikg.de/version> "15343:2007"^^xsd:string ;
+                                    rdfs:label "DIN EN 15343" .
 
 
-###  http://www.semanticweb.org/wahl/ontologies/2022/1/polymer#m
-:m rdf:type owl:NamedIndividual ,
-            :Unit .
+###  http://wue.plastikg.de/Numeric
+<http://wue.plastikg.de/Numeric> rdf:type owl:NamedIndividual ,
+                                          <http://wue.plastikg.de/Value_Type> ;
+                                 rdfs:label "Numeric" .
 
 
-###  http://www.semanticweb.org/wahl/ontologies/2022/1/polymer#percent
-:percent rdf:type owl:NamedIndividual ,
-                  :Unit .
+###  http://wue.plastikg.de/Percentage
+<http://wue.plastikg.de/Percentage> rdf:type owl:NamedIndividual ,
+                                             <http://wue.plastikg.de/Value_Type> ;
+                                    rdfs:label "Percentage" .
 
 
-###  http://www.semanticweb.org/wahl/ontologies/2022/1/polymer#ISO_1133-1:2011-12
-<http://www.semanticweb.org/wahl/ontologies/2022/1/polymer#ISO_1133-1:2011-12> rdf:type owl:NamedIndividual ,
-                                                                                        :ISO .
+###  http://wue.plastikg.de/Range
+<http://wue.plastikg.de/Range> rdf:type owl:NamedIndividual ,
+                                        <http://wue.plastikg.de/Value_Type> ;
+                               rdfs:label "Range" .
 
 
-###  http://www.semanticweb.org/wahl/ontologies/2022/1/polymer#KJ/m2
-<http://www.semanticweb.org/wahl/ontologies/2022/1/polymer#KJ/m2> rdf:type owl:NamedIndividual ,
-                                                                           :Unit .
+###  http://wue.plastikg.de/charpy_impact
+<http://wue.plastikg.de/charpy_impact> rdf:type owl:NamedIndividual ,
+                                                <http://wue.plastikg.de/Property> ;
+                                       rdfs:label "charpy_impact" .
 
 
-###  http://www.semanticweb.org/wahl/ontologies/2022/1/polymer#cm3/10min
-<http://www.semanticweb.org/wahl/ontologies/2022/1/polymer#cm3/10min> rdf:type owl:NamedIndividual ,
-                                                                               :Unit .
+###  http://wue.plastikg.de/charpy_notch_impact
+<http://wue.plastikg.de/charpy_notch_impact> rdf:type owl:NamedIndividual ,
+                                                      <http://wue.plastikg.de/Property> ;
+                                             rdfs:label "charpy_notch_impact" .
 
 
-###  http://www.semanticweb.org/wahl/ontologies/2022/1/polymer#g/10min
-<http://www.semanticweb.org/wahl/ontologies/2022/1/polymer#g/10min> rdf:type owl:NamedIndividual ,
-                                                                             :Unit .
+###  http://wue.plastikg.de/deformation_under_load
+<http://wue.plastikg.de/deformation_under_load> rdf:type owl:NamedIndividual ,
+                                                         <http://wue.plastikg.de/Property> ;
+                                                rdfs:label "deformation_under_load" .
 
 
-#################################################################
-#    General axioms
-#################################################################
-
-[ rdf:type owl:AllDisjointClasses ;
-  owl:members ( :ASTM_D
-                :DIN
-                :IEC
-                :ISO
-                :UL
-              )
-] .
+###  http://wue.plastikg.de/degree_celsius
+<http://wue.plastikg.de/degree_celsius> rdf:type owl:NamedIndividual ,
+                                                 <http://wue.plastikg.de/Unit> ;
+                                        <http://wue.plastikg.de/symbol> "°C"^^xsd:string ;
+                                        rdfs:label "degree_celsius" .
 
 
-[ rdf:type owl:AllDisjointClasses ;
-  owl:members ( :AcrylicEsterStyreneAcrylonitrileTerpolymer
-                :AcrylonitrileButadieneStyreneCopolymer
-                :CelluloseAcetate
-                :CelluloseNitrate
-                :ChlorinatedPolyethylene
-                :ChlorinatedPolyvinylChloride
-                :EmulsionPolyvinlychloride
-                :EthyleneChlorotrifluoroethylene
-                :EthyleneMethacrylateCopolymer
-                :EthyleneTetrafluoroethylene
-                :FluoroethylenePropylene
-                :FoamedPolyethylene
-                :FoamedPolypropylene
-                :HighDensityPolyethylene
-                :HighImpactPolystyrene
-                :LinearLowDensityPolyethylene
-                :LiquidCrystallinePolymers
-                :LowDensityPolyethylene
-                :MediumDensityPolyethylene
-                :MethylMethacrylateAcrylonitrileButadieneStyrene
-                :NaturalFiberReinforcedPlastic
-                :PerfluoroalkoxyCopolymer
-                :Polyacrylonitrile
-                :Polyamide
-                :Polyamide10.10
-                :Polyamide10.12
-                :Polyamide11
-                :Polyamide12
-                :Polyamide12.12
-                :Polyamide4.6
-                :Polyamide5.10
-                :Polyamide6
-                :Polyamide6.10
-                :Polyamide6.12
-                :Polyamide6.6
-                :Polyarylate
-                :Polybutene
-                :PolybutyleneTerephthalate
-                :Polycarbonate
-                :Polyetheretherketone
-                :Polyetherimide
-                :Polyethersulfone
-                :Polyethylene
-                :PolyethyleneTerephthalate
-                :Polyhydroxybutyrate
-                :Polyimide
-                :Polylactide
-                :PolymethylMethacrylate
-                :Polyoxymethylene
-                :PolyphenyleneSulfide
-                :Polyphenylether
-                :PolyphenyletherSulfone
-                :Polyphthalamide
-                :Polypropylene
-                :PolypropyleneCopolymer
-                :Polystyrene
-                :PolystyreneFoamed
-                :Polysulfone
-                :Polytetrafluoroethylene
-                :Polyurethan
-                :PolyvinylChloride
-                :PolyvinylideneFlouride
-                :StyreneAcrylonitrileCopolymer
-                :StyreneButadiene
-                :UltraHighMolecularWeightPolyethylene
-                :WoodPlasticComposites
-              )
-] .
+###  http://wue.plastikg.de/density
+<http://wue.plastikg.de/density> rdf:type owl:NamedIndividual ,
+                                          <http://wue.plastikg.de/Property> ;
+                                 rdfs:label "density" .
 
 
-[ rdf:type owl:AllDisjointClasses ;
-  owl:members ( :AcrylonitrileButadieneRubber
-                :EthyleneAcrylicAcidAcrylateCopolymer
-                :EthyleneAcrylicAcidMaleicAnhydride
-                :EthyleneButylAcrylateCopolymer
-                :EthylenePropyleneDieneRubber
-                :EthyleneVinylAcetateCopolymer
-                :Polyurethan
-                :StyreneButadieneRubber
-              )
-] .
+###  http://wue.plastikg.de/izod_impact
+<http://wue.plastikg.de/izod_impact> rdf:type owl:NamedIndividual ,
+                                              <http://wue.plastikg.de/Property> ;
+                                     rdfs:label "izod_impact" .
 
 
-[ rdf:type owl:AllDisjointClasses ;
-  owl:members ( :Celluloseester
-                :Copolymerisation
-                :Polyaddition
-                :Polycondensation
-                :Polymerisation
-              )
-] .
+###  http://wue.plastikg.de/izod_notch_impact
+<http://wue.plastikg.de/izod_notch_impact> rdf:type owl:NamedIndividual ,
+                                                    <http://wue.plastikg.de/Property> ;
+                                           rdfs:label "izod_notch_impact" .
 
 
-[ rdf:type owl:AllDisjointClasses ;
-  owl:members ( :Chemical
-                :Electrical
-                :Flammability
-                :General
-                :Mechanical
-                :Optical
-                :Other
-                :Physical
-                :Rheological
-                :Thermal
-              )
-] .
+###  http://wue.plastikg.de/mega_pascal
+<http://wue.plastikg.de/mega_pascal> rdf:type owl:NamedIndividual ,
+                                              <http://wue.plastikg.de/Unit> ;
+                                     <http://wue.plastikg.de/symbol> "MPa"^^xsd:string ;
+                                     rdfs:label "mega_pascal" .
 
 
-[ rdf:type owl:AllDisjointClasses ;
-  owl:members ( :Polyolefine
-                :Styrolpolymer
-                :Vinylpolymer
-              )
-] .
+###  http://wue.plastikg.de/melt_volume_flow_rate
+<http://wue.plastikg.de/melt_volume_flow_rate> rdf:type owl:NamedIndividual ,
+                                                        <http://wue.plastikg.de/Property> ;
+                                               rdfs:label "melt_volume_flow_rate" .
 
 
-###  Generated by the OWL API (version 4.5.9.2019-02-01T07:24:44Z) https://github.com/owlcs/owlapi
+###  http://wue.plastikg.de/melting_temperature
+<http://wue.plastikg.de/melting_temperature> rdf:type owl:NamedIndividual ,
+                                                      <http://wue.plastikg.de/Property> ;
+                                             rdfs:label "melting_temperature" .
+
+
+###  http://wue.plastikg.de/procyclen_PP_06_M60_C08_GF30
+<http://wue.plastikg.de/procyclen_PP_06_M60_C08_GF30> rdf:type owl:NamedIndividual ,
+                                                               <http://wue.plastikg.de/Polymer> ;
+                                                      <http://wue.plastikg.de/has_attribute> <http://wue.plastikg.de/procyclen_PP_06_M60_C08_GF30_A1> ,
+                                                                                             <http://wue.plastikg.de/procyclen_PP_06_M60_C08_GF30_A2> ,
+                                                                                             <http://wue.plastikg.de/procyclen_PP_06_M60_C08_GF30_A3> ,
+                                                                                             <http://wue.plastikg.de/procyclen_PP_06_M60_C08_GF30_A4> ,
+                                                                                             <http://wue.plastikg.de/procyclen_PP_06_M60_C08_GF30_A5> ,
+                                                                                             <http://wue.plastikg.de/procyclen_PP_06_M60_C08_GF30_A6> ;
+                                                      <http://wue.plastikg.de/produced_by> <http://wue.plastikg.de/ALBA_Recycling_GmbH> ;
+                                                      rdfs:label "procyclen_PP_06_M60_C08_GF30" .
+
+
+###  http://wue.plastikg.de/procyclen_PP_06_M60_C08_GF30_A1
+<http://wue.plastikg.de/procyclen_PP_06_M60_C08_GF30_A1> rdf:type owl:NamedIndividual ,
+                                                                  <http://wue.plastikg.de/Attribute> ;
+                                                         <http://wue.plastikg.de/has_property> <http://wue.plastikg.de/melt_volume_flow_rate> ;
+                                                         <http://wue.plastikg.de/has_value_type> <http://wue.plastikg.de/Range> ;
+                                                         <http://wue.plastikg.de/has_condition> "230 °C; 2,16 kg"^^xsd:string ;
+                                                         <http://wue.plastikg.de/max_value> 7 ;
+                                                         <http://wue.plastikg.de/min_value> 5 ;
+                                                         rdfs:label "procyclen_PP_06_M60_C08_GF30_A1" .
+
+
+###  http://wue.plastikg.de/procyclen_PP_06_M60_C08_GF30_A2
+<http://wue.plastikg.de/procyclen_PP_06_M60_C08_GF30_A2> rdf:type owl:NamedIndividual ,
+                                                                  <http://wue.plastikg.de/Attribute> ;
+                                                         <http://wue.plastikg.de/has_property> <http://wue.plastikg.de/density> ;
+                                                         <http://wue.plastikg.de/has_value_type> <http://wue.plastikg.de/Range> ;
+                                                         <http://wue.plastikg.de/max_value> 1.3 ;
+                                                         <http://wue.plastikg.de/min_value> 1.1 ;
+                                                         rdfs:label "procyclen_PP_06_M60_C08_GF30_A2" .
+
+
+###  http://wue.plastikg.de/procyclen_PP_06_M60_C08_GF30_A3
+<http://wue.plastikg.de/procyclen_PP_06_M60_C08_GF30_A3> rdf:type owl:NamedIndividual ,
+                                                                  <http://wue.plastikg.de/Attribute> ;
+                                                         <http://wue.plastikg.de/has_property> <http://wue.plastikg.de/tensile_modulus> ;
+                                                         <http://wue.plastikg.de/has_unit> <http://wue.plastikg.de/mega_pascal> ;
+                                                         <http://wue.plastikg.de/has_value_type> <http://wue.plastikg.de/Range> ;
+                                                         <http://wue.plastikg.de/max_value> 6900 ;
+                                                         <http://wue.plastikg.de/min_value> 5100 ;
+                                                         rdfs:label "procyclen_PP_06_M60_C08_GF30_A3" .
+
+
+###  http://wue.plastikg.de/procyclen_PP_06_M60_C08_GF30_A4
+<http://wue.plastikg.de/procyclen_PP_06_M60_C08_GF30_A4> rdf:type owl:NamedIndividual ,
+                                                                  <http://wue.plastikg.de/Attribute> ;
+                                                         <http://wue.plastikg.de/has_property> <http://wue.plastikg.de/tensile_strength> ;
+                                                         <http://wue.plastikg.de/has_unit> <http://wue.plastikg.de/mega_pascal> ;
+                                                         <http://wue.plastikg.de/has_value_type> <http://wue.plastikg.de/Range> ;
+                                                         <http://wue.plastikg.de/max_value> 75 ;
+                                                         <http://wue.plastikg.de/min_value> 55 ;
+                                                         rdfs:label "procyclen_PP_06_M60_C08_GF30_A4" .
+
+
+###  http://wue.plastikg.de/procyclen_PP_06_M60_C08_GF30_A5
+<http://wue.plastikg.de/procyclen_PP_06_M60_C08_GF30_A5> rdf:type owl:NamedIndividual ,
+                                                                  <http://wue.plastikg.de/Attribute> ;
+                                                         <http://wue.plastikg.de/has_property> <http://wue.plastikg.de/izod_notch_impact> ;
+                                                         <http://wue.plastikg.de/has_value_type> <http://wue.plastikg.de/Range> ;
+                                                         <http://wue.plastikg.de/has_condition> "23 ± 2 °C"^^xsd:string ;
+                                                         <http://wue.plastikg.de/max_value> 9.2 ;
+                                                         <http://wue.plastikg.de/min_value> 6.8 ;
+                                                         rdfs:label "procyclen_PP_06_M60_C08_GF30_A5" .
+
+
+###  http://wue.plastikg.de/procyclen_PP_06_M60_C08_GF30_A6
+<http://wue.plastikg.de/procyclen_PP_06_M60_C08_GF30_A6> rdf:type owl:NamedIndividual ,
+                                                                  <http://wue.plastikg.de/Attribute> ;
+                                                         <http://wue.plastikg.de/has_property> <http://wue.plastikg.de/charpy_notch_impact> ;
+                                                         <http://wue.plastikg.de/has_value_type> <http://wue.plastikg.de/Range> ;
+                                                         <http://wue.plastikg.de/has_condition> "23 ± 2 °C"^^xsd:string ;
+                                                         <http://wue.plastikg.de/max_value> 10 ;
+                                                         <http://wue.plastikg.de/min_value> 6 ;
+                                                         rdfs:label "procyclen_PP_06_M60_C08_GF30_A6" .
+
+
+###  http://wue.plastikg.de/tensile_elongation
+<http://wue.plastikg.de/tensile_elongation> rdf:type owl:NamedIndividual ,
+                                                     <http://wue.plastikg.de/Property> ;
+                                            rdfs:label "tensile_elongation" .
+
+
+###  http://wue.plastikg.de/tensile_modulus
+<http://wue.plastikg.de/tensile_modulus> rdf:type owl:NamedIndividual ,
+                                                  <http://wue.plastikg.de/Property> ;
+                                         rdfs:label "tensile_modulus" .
+
+
+###  http://wue.plastikg.de/tensile_strength
+<http://wue.plastikg.de/tensile_strength> rdf:type owl:NamedIndividual ,
+                                                   <http://wue.plastikg.de/Property> ;
+                                          rdfs:label "tensile_strength" .
+
+
+###  http://wue.plastikg.de/3M
+<http://wue.plastikg.de/3M> rdf:type owl:NamedIndividual ,
+                                     <http://wue.plastikg.de/Company> ;
+                            rdfs:label "3M" .
+
+
+###  http://wue.plastikg.de/3M_Dyneon_PTFE_TF_1620
+<http://wue.plastikg.de/3M_Dyneon_PTFE_TF_1620> rdf:type owl:NamedIndividual ,
+                                                         <http://wue.plastikg.de/Polymer> ;
+                                                <http://wue.plastikg.de/has_attribute> <http://wue.plastikg.de/3M_Dyneon_PTFE_TF_1620_A1> ,
+                                                                                       <http://wue.plastikg.de/3M_Dyneon_PTFE_TF_1620_A2> ,
+                                                                                       <http://wue.plastikg.de/3M_Dyneon_PTFE_TF_1620_A3> ,
+                                                                                       <http://wue.plastikg.de/3M_Dyneon_PTFE_TF_1620_A4> ,
+                                                                                       <http://wue.plastikg.de/3M_Dyneon_PTFE_TF_1620_A5> ,
+                                                                                       <http://wue.plastikg.de/3M_Dyneon_PTFE_TF_1620_A6> ,
+                                                                                       <http://wue.plastikg.de/3M_Dyneon_PTFE_TF_1620_A7> ,
+                                                                                       <http://wue.plastikg.de/3M_Dyneon_PTFE_TF_1620_A8> ,
+                                                                                       <http://wue.plastikg.de/3M_Dyneon_PTFE_TF_1620_A9> ;
+                                                <http://wue.plastikg.de/produced_by> <http://wue.plastikg.de/3M> ;
+                                                rdfs:label "3M_Dyneon_PTFE_TF_1620" .
+
+
+###  http://wue.plastikg.de/3M_Dyneon_PTFE_TF_1620_A1
+<http://wue.plastikg.de/3M_Dyneon_PTFE_TF_1620_A1> rdf:type owl:NamedIndividual ,
+                                                            <http://wue.plastikg.de/Attribute> ;
+                                                   <http://wue.plastikg.de/has_property> <http://wue.plastikg.de/density> ;
+                                                   <http://wue.plastikg.de/has_value_type> <http://wue.plastikg.de/Numeric> ;
+                                                   <http://wue.plastikg.de/exact_value> 2.15 ;
+                                                   rdfs:label "3M_Dyneon_PTFE_TF_1620_A1" .
+
+
+###  http://wue.plastikg.de/3M_Dyneon_PTFE_TF_1620_A2
+<http://wue.plastikg.de/3M_Dyneon_PTFE_TF_1620_A2> rdf:type owl:NamedIndividual ,
+                                                            <http://wue.plastikg.de/Attribute> ;
+                                                   <http://wue.plastikg.de/has_property> <http://wue.plastikg.de/tensile_modulus> ;
+                                                   <http://wue.plastikg.de/has_unit> <http://wue.plastikg.de/mega_pascal> ;
+                                                   <http://wue.plastikg.de/has_value_type> <http://wue.plastikg.de/Numeric> ;
+                                                   <http://wue.plastikg.de/exact_value> 600 ;
+                                                   rdfs:label "3M_Dyneon_PTFE_TF_1620_A2" .
+
+
+###  http://wue.plastikg.de/3M_Dyneon_PTFE_TF_1620_A3
+<http://wue.plastikg.de/3M_Dyneon_PTFE_TF_1620_A3> rdf:type owl:NamedIndividual ,
+                                                            <http://wue.plastikg.de/Attribute> ;
+                                                   <http://wue.plastikg.de/has_property> <http://wue.plastikg.de/tensile_strength> ;
+                                                   <http://wue.plastikg.de/has_unit> <http://wue.plastikg.de/mega_pascal> ;
+                                                   <http://wue.plastikg.de/has_value_type> <http://wue.plastikg.de/Range> ;
+                                                   <http://wue.plastikg.de/min_value> 27.6 ;
+                                                   rdfs:label "3M_Dyneon_PTFE_TF_1620_A3" .
+
+
+###  http://wue.plastikg.de/3M_Dyneon_PTFE_TF_1620_A4
+<http://wue.plastikg.de/3M_Dyneon_PTFE_TF_1620_A4> rdf:type owl:NamedIndividual ,
+                                                            <http://wue.plastikg.de/Attribute> ;
+                                                   <http://wue.plastikg.de/has_property> <http://wue.plastikg.de/tensile_elongation> ;
+                                                   <http://wue.plastikg.de/has_value_type> <http://wue.plastikg.de/Percentage> ;
+                                                   <http://wue.plastikg.de/exact_value> 350 ;
+                                                   <http://wue.plastikg.de/has_condition> "(Break)"^^xsd:string ;
+                                                   rdfs:label "3M_Dyneon_PTFE_TF_1620_A4" .
+
+
+###  http://wue.plastikg.de/3M_Dyneon_PTFE_TF_1620_A5
+<http://wue.plastikg.de/3M_Dyneon_PTFE_TF_1620_A5> rdf:type owl:NamedIndividual ,
+                                                            <http://wue.plastikg.de/Attribute> ;
+                                                   <http://wue.plastikg.de/has_property> <http://wue.plastikg.de/deformation_under_load> ;
+                                                   <http://wue.plastikg.de/has_value_type> <http://wue.plastikg.de/Percentage> ;
+                                                   <http://wue.plastikg.de/exact_value> 15.0 ;
+                                                   <http://wue.plastikg.de/has_condition> "15 MPa; 24 hrs"^^xsd:string ;
+                                                   rdfs:label "3M_Dyneon_PTFE_TF_1620_A5" .
+
+
+###  http://wue.plastikg.de/3M_Dyneon_PTFE_TF_1620_A6
+<http://wue.plastikg.de/3M_Dyneon_PTFE_TF_1620_A6> rdf:type owl:NamedIndividual ,
+                                                            <http://wue.plastikg.de/Attribute> ;
+                                                   <http://wue.plastikg.de/has_property> <http://wue.plastikg.de/deformation_under_load> ;
+                                                   <http://wue.plastikg.de/has_value_type> <http://wue.plastikg.de/Percentage> ;
+                                                   <http://wue.plastikg.de/exact_value> 17.0 ;
+                                                   <http://wue.plastikg.de/has_condition> "15 MPa; 100 hrs"^^xsd:string ;
+                                                   rdfs:label "3M_Dyneon_PTFE_TF_1620_A6" .
+
+
+###  http://wue.plastikg.de/3M_Dyneon_PTFE_TF_1620_A7
+<http://wue.plastikg.de/3M_Dyneon_PTFE_TF_1620_A7> rdf:type owl:NamedIndividual ,
+                                                            <http://wue.plastikg.de/Attribute> ;
+                                                   <http://wue.plastikg.de/has_property> <http://wue.plastikg.de/deformation_under_load> ;
+                                                   <http://wue.plastikg.de/has_value_type> <http://wue.plastikg.de/Percentage> ;
+                                                   <http://wue.plastikg.de/exact_value> 11.0 ;
+                                                   <http://wue.plastikg.de/has_condition> "15 MPa; Permanent"^^xsd:string ;
+                                                   rdfs:label "3M_Dyneon_PTFE_TF_1620_A7" .
+
+
+###  http://wue.plastikg.de/3M_Dyneon_PTFE_TF_1620_A8
+<http://wue.plastikg.de/3M_Dyneon_PTFE_TF_1620_A8> rdf:type owl:NamedIndividual ,
+                                                            <http://wue.plastikg.de/Attribute> ;
+                                                   <http://wue.plastikg.de/has_property> <http://wue.plastikg.de/melting_temperature> ;
+                                                   <http://wue.plastikg.de/has_unit> <http://wue.plastikg.de/degree_celsius> ;
+                                                   <http://wue.plastikg.de/has_value_type> <http://wue.plastikg.de/Range> ;
+                                                   <http://wue.plastikg.de/has_condition> "Second"^^xsd:string ;
+                                                   <http://wue.plastikg.de/max_value> 337 ;
+                                                   <http://wue.plastikg.de/min_value> 317 ;
+                                                   rdfs:label "3M_Dyneon_PTFE_TF_1620_A8" .
+
+
+###  http://wue.plastikg.de/3M_Dyneon_PTFE_TF_1620_A9
+<http://wue.plastikg.de/3M_Dyneon_PTFE_TF_1620_A9> rdf:type owl:NamedIndividual ,
+                                                            <http://wue.plastikg.de/Attribute> ;
+                                                   <http://wue.plastikg.de/has_property> <http://wue.plastikg.de/melting_temperature> ;
+                                                   <http://wue.plastikg.de/has_unit> <http://wue.plastikg.de/degree_celsius> ;
+                                                   <http://wue.plastikg.de/has_value_type> <http://wue.plastikg.de/Range> ;
+                                                   <http://wue.plastikg.de/has_condition> "Initial"^^xsd:string ;
+                                                   <http://wue.plastikg.de/max_value> 352 ;
+                                                   <http://wue.plastikg.de/min_value> 332 ;
+                                                   rdfs:label "3M_Dyneon_PTFE_TF_1620_A9" .
+
+
+###  Generated by the OWL API (version 4.5.13) https://github.com/owlcs/owlapi
