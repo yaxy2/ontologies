@@ -1,0 +1,773 @@
+<rdf:RDF xmlns="urn:webprotege:ontology:bc3d6248-c99c-47af-8786-e6ba7ade855b#"
+     xml:base="urn:webprotege:ontology:bc3d6248-c99c-47af-8786-e6ba7ade855b"
+     xmlns:owl="http://www.w3.org/2002/07/owl#"
+     xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+     xmlns:xml="http://www.w3.org/XML/1998/namespace"
+     xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+     xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#">
+    <owl:Ontology rdf:about="urn:webprotege:ontology:bc3d6248-c99c-47af-8786-e6ba7ade855b"/>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Object Properties
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://wue.plastikg.de/has_property -->
+
+    <owl:ObjectProperty rdf:about="http://wue.plastikg.de/has_property">
+        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topObjectProperty"/>
+        <rdfs:domain rdf:resource="http://wue.plastikg.de/Plastic"/>
+        <rdfs:range rdf:resource="http://wue.plastikg.de/Property"/>
+        <rdfs:label xml:lang="en">has_property</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Data properties
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://wue.plastikg.de/has_application_property -->
+
+    <owl:DatatypeProperty rdf:about="http://wue.plastikg.de/has_application_property">
+        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topDataProperty"/>
+        <rdfs:domain rdf:resource="http://wue.plastikg.de/Plastic"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+        <rdfs:label xml:lang="en">has_application_property</rdfs:label>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://wue.plastikg.de/has_formation_reaction -->
+
+    <owl:DatatypeProperty rdf:about="http://wue.plastikg.de/has_formation_reaction">
+        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topDataProperty"/>
+        <rdfs:domain rdf:resource="http://wue.plastikg.de/Plastic"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+        <rdfs:label xml:lang="en">has_formation_reaction</rdfs:label>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://wue.plastikg.de/has_material_name -->
+
+    <owl:DatatypeProperty rdf:about="http://wue.plastikg.de/has_material_name">
+        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topDataProperty"/>
+        <rdfs:domain rdf:resource="http://wue.plastikg.de/Plastic"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+        <rdfs:label xml:lang="en">has_material_name</rdfs:label>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://wue.plastikg.de/has_physical_property -->
+
+    <owl:DatatypeProperty rdf:about="http://wue.plastikg.de/has_physical_property">
+        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topDataProperty"/>
+        <rdfs:domain rdf:resource="http://wue.plastikg.de/Plastic"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+        <rdfs:label xml:lang="en">has_physical_property</rdfs:label>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://wue.plastikg.de/has_polymer_group -->
+
+    <owl:DatatypeProperty rdf:about="http://wue.plastikg.de/has_polymer_group">
+        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topDataProperty"/>
+        <rdfs:domain rdf:resource="http://wue.plastikg.de/Plastic"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+        <rdfs:label xml:lang="en">has_polymer_group</rdfs:label>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://wue.plastikg.de/has_short_synonym -->
+
+    <owl:DatatypeProperty rdf:about="http://wue.plastikg.de/has_short_synonym">
+        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topDataProperty"/>
+        <rdfs:domain rdf:resource="http://wue.plastikg.de/Plastic"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+        <rdfs:label xml:lang="en">has_short_synonym</rdfs:label>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://wue.plastikg.de/identifier -->
+
+    <owl:DatatypeProperty rdf:about="http://wue.plastikg.de/identifier">
+        <rdfs:domain rdf:resource="http://wue.plastikg.de/Plastic"/>
+        <rdfs:domain rdf:resource="http://wue.plastikg.de/Property"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+        <rdfs:label xml:lang="en">identifier</rdfs:label>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Classes
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://wue.plastikg.de/AB -->
+
+    <owl:Class rdf:about="http://wue.plastikg.de/AB">
+        <rdfs:subClassOf rdf:resource="http://wue.plastikg.de/Plastic"/>
+        <rdfs:label xml:lang="en">AB</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://wue.plastikg.de/ABS -->
+
+    <owl:Class rdf:about="http://wue.plastikg.de/ABS">
+        <rdfs:subClassOf rdf:resource="http://wue.plastikg.de/Plastic"/>
+        <rdfs:label xml:lang="en">ABS</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://wue.plastikg.de/ASA -->
+
+    <owl:Class rdf:about="http://wue.plastikg.de/ASA">
+        <rdfs:subClassOf rdf:resource="http://wue.plastikg.de/Plastic"/>
+        <rdfs:label xml:lang="en">ASA</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://wue.plastikg.de/Aging_Property -->
+
+    <owl:Class rdf:about="http://wue.plastikg.de/Aging_Property">
+        <rdfs:subClassOf rdf:resource="http://wue.plastikg.de/Property"/>
+        <rdfs:label xml:lang="en">Aging_Property</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://wue.plastikg.de/CA -->
+
+    <owl:Class rdf:about="http://wue.plastikg.de/CA">
+        <rdfs:subClassOf rdf:resource="http://wue.plastikg.de/Plastic"/>
+        <rdfs:label xml:lang="en">CA</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://wue.plastikg.de/CFK -->
+
+    <owl:Class rdf:about="http://wue.plastikg.de/CFK">
+        <rdfs:subClassOf rdf:resource="http://wue.plastikg.de/Plastic"/>
+        <rdfs:label xml:lang="en">CFK</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://wue.plastikg.de/E-PVC -->
+
+    <owl:Class rdf:about="http://wue.plastikg.de/E-PVC">
+        <rdfs:subClassOf rdf:resource="http://wue.plastikg.de/Plastic"/>
+        <rdfs:label xml:lang="en">E-PVC</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://wue.plastikg.de/ECTFE -->
+
+    <owl:Class rdf:about="http://wue.plastikg.de/ECTFE">
+        <rdfs:subClassOf rdf:resource="http://wue.plastikg.de/Plastic"/>
+        <rdfs:label xml:lang="en">ECTFE</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://wue.plastikg.de/EMA -->
+
+    <owl:Class rdf:about="http://wue.plastikg.de/EMA">
+        <rdfs:subClassOf rdf:resource="http://wue.plastikg.de/Plastic"/>
+        <rdfs:label xml:lang="en">EMA</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://wue.plastikg.de/EPDM -->
+
+    <owl:Class rdf:about="http://wue.plastikg.de/EPDM">
+        <rdfs:subClassOf rdf:resource="http://wue.plastikg.de/Plastic"/>
+        <rdfs:label xml:lang="en">EPDM</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://wue.plastikg.de/ETFE -->
+
+    <owl:Class rdf:about="http://wue.plastikg.de/ETFE">
+        <rdfs:subClassOf rdf:resource="http://wue.plastikg.de/Plastic"/>
+        <rdfs:label xml:lang="en">ETFE</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://wue.plastikg.de/Electric_Property -->
+
+    <owl:Class rdf:about="http://wue.plastikg.de/Electric_Property">
+        <rdfs:subClassOf rdf:resource="http://wue.plastikg.de/Property"/>
+        <rdfs:label xml:lang="en">Electric_Property</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://wue.plastikg.de/HIPS -->
+
+    <owl:Class rdf:about="http://wue.plastikg.de/HIPS">
+        <rdfs:subClassOf rdf:resource="http://wue.plastikg.de/Plastic"/>
+        <rdfs:label xml:lang="en">HIPS</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://wue.plastikg.de/LCP -->
+
+    <owl:Class rdf:about="http://wue.plastikg.de/LCP">
+        <rdfs:subClassOf rdf:resource="http://wue.plastikg.de/Plastic"/>
+        <rdfs:label xml:lang="en">LCP</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://wue.plastikg.de/Mechanical_Property -->
+
+    <owl:Class rdf:about="http://wue.plastikg.de/Mechanical_Property">
+        <rdfs:subClassOf rdf:resource="http://wue.plastikg.de/Property"/>
+        <rdfs:label xml:lang="en">Mechanical_Property</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://wue.plastikg.de/NFR -->
+
+    <owl:Class rdf:about="http://wue.plastikg.de/NFR">
+        <rdfs:subClassOf rdf:resource="http://wue.plastikg.de/Plastic"/>
+        <rdfs:label xml:lang="en">NFR</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://wue.plastikg.de/Other_Property -->
+
+    <owl:Class rdf:about="http://wue.plastikg.de/Other_Property">
+        <rdfs:subClassOf rdf:resource="http://wue.plastikg.de/Property"/>
+        <rdfs:label xml:lang="en">Other_Property</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://wue.plastikg.de/PA -->
+
+    <owl:Class rdf:about="http://wue.plastikg.de/PA">
+        <rdfs:subClassOf rdf:resource="http://wue.plastikg.de/Plastic"/>
+        <rdfs:label xml:lang="en">PA</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://wue.plastikg.de/PAN -->
+
+    <owl:Class rdf:about="http://wue.plastikg.de/PAN">
+        <rdfs:subClassOf rdf:resource="http://wue.plastikg.de/Plastic"/>
+        <rdfs:label xml:lang="en">PAN</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://wue.plastikg.de/PAR -->
+
+    <owl:Class rdf:about="http://wue.plastikg.de/PAR">
+        <rdfs:subClassOf rdf:resource="http://wue.plastikg.de/Plastic"/>
+        <rdfs:label xml:lang="en">PAR</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://wue.plastikg.de/PB -->
+
+    <owl:Class rdf:about="http://wue.plastikg.de/PB">
+        <rdfs:subClassOf rdf:resource="http://wue.plastikg.de/Plastic"/>
+        <rdfs:label xml:lang="en">PB</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://wue.plastikg.de/PBT -->
+
+    <owl:Class rdf:about="http://wue.plastikg.de/PBT">
+        <rdfs:subClassOf rdf:resource="http://wue.plastikg.de/Plastic"/>
+        <rdfs:label xml:lang="en">PBT</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://wue.plastikg.de/PC -->
+
+    <owl:Class rdf:about="http://wue.plastikg.de/PC">
+        <rdfs:subClassOf rdf:resource="http://wue.plastikg.de/Plastic"/>
+        <rdfs:label xml:lang="en">PC</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://wue.plastikg.de/PE -->
+
+    <owl:Class rdf:about="http://wue.plastikg.de/PE">
+        <rdfs:subClassOf rdf:resource="http://wue.plastikg.de/Plastic"/>
+        <rdfs:label xml:lang="en">PE</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://wue.plastikg.de/PEI -->
+
+    <owl:Class rdf:about="http://wue.plastikg.de/PEI">
+        <rdfs:subClassOf rdf:resource="http://wue.plastikg.de/Plastic"/>
+        <rdfs:label xml:lang="en">PEI</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://wue.plastikg.de/PET -->
+
+    <owl:Class rdf:about="http://wue.plastikg.de/PET">
+        <rdfs:subClassOf rdf:resource="http://wue.plastikg.de/Plastic"/>
+        <rdfs:label xml:lang="en">PET</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://wue.plastikg.de/PFA -->
+
+    <owl:Class rdf:about="http://wue.plastikg.de/PFA">
+        <rdfs:subClassOf rdf:resource="http://wue.plastikg.de/Plastic"/>
+        <rdfs:label xml:lang="en">PFA</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://wue.plastikg.de/PHB -->
+
+    <owl:Class rdf:about="http://wue.plastikg.de/PHB">
+        <rdfs:subClassOf rdf:resource="http://wue.plastikg.de/Plastic"/>
+        <rdfs:label xml:lang="en">PHB</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://wue.plastikg.de/PI -->
+
+    <owl:Class rdf:about="http://wue.plastikg.de/PI">
+        <rdfs:subClassOf rdf:resource="http://wue.plastikg.de/Plastic"/>
+        <rdfs:label xml:lang="en">PI</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://wue.plastikg.de/PLA -->
+
+    <owl:Class rdf:about="http://wue.plastikg.de/PLA">
+        <rdfs:subClassOf rdf:resource="http://wue.plastikg.de/Plastic"/>
+        <rdfs:label xml:lang="en">PLA</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://wue.plastikg.de/PMMA -->
+
+    <owl:Class rdf:about="http://wue.plastikg.de/PMMA">
+        <rdfs:subClassOf rdf:resource="http://wue.plastikg.de/Plastic"/>
+        <rdfs:label xml:lang="en">PMMA</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://wue.plastikg.de/POM -->
+
+    <owl:Class rdf:about="http://wue.plastikg.de/POM">
+        <rdfs:subClassOf rdf:resource="http://wue.plastikg.de/Plastic"/>
+        <rdfs:label xml:lang="en">POM</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://wue.plastikg.de/PP -->
+
+    <owl:Class rdf:about="http://wue.plastikg.de/PP">
+        <rdfs:subClassOf rdf:resource="http://wue.plastikg.de/Plastic"/>
+        <rdfs:label xml:lang="en">PP</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://wue.plastikg.de/PP-F -->
+
+    <owl:Class rdf:about="http://wue.plastikg.de/PP-F">
+        <rdfs:subClassOf rdf:resource="http://wue.plastikg.de/Plastic"/>
+        <rdfs:label xml:lang="en">PP-F</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://wue.plastikg.de/PPA -->
+
+    <owl:Class rdf:about="http://wue.plastikg.de/PPA">
+        <rdfs:subClassOf rdf:resource="http://wue.plastikg.de/Plastic"/>
+        <rdfs:label xml:lang="en">PPA</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://wue.plastikg.de/PPE -->
+
+    <owl:Class rdf:about="http://wue.plastikg.de/PPE">
+        <rdfs:subClassOf rdf:resource="http://wue.plastikg.de/Plastic"/>
+        <rdfs:label xml:lang="en">PPE</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://wue.plastikg.de/PPO -->
+
+    <owl:Class rdf:about="http://wue.plastikg.de/PPO">
+        <rdfs:subClassOf rdf:resource="http://wue.plastikg.de/Plastic"/>
+        <rdfs:label xml:lang="en">PPO</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://wue.plastikg.de/PPS -->
+
+    <owl:Class rdf:about="http://wue.plastikg.de/PPS">
+        <rdfs:subClassOf rdf:resource="http://wue.plastikg.de/Plastic"/>
+        <rdfs:label xml:lang="en">PPS</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://wue.plastikg.de/PPSU -->
+
+    <owl:Class rdf:about="http://wue.plastikg.de/PPSU">
+        <rdfs:subClassOf rdf:resource="http://wue.plastikg.de/Plastic"/>
+        <rdfs:label xml:lang="en">PPSU</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://wue.plastikg.de/PS -->
+
+    <owl:Class rdf:about="http://wue.plastikg.de/PS">
+        <rdfs:subClassOf rdf:resource="http://wue.plastikg.de/Plastic"/>
+        <rdfs:label xml:lang="en">PS</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://wue.plastikg.de/PS-E -->
+
+    <owl:Class rdf:about="http://wue.plastikg.de/PS-E">
+        <rdfs:subClassOf rdf:resource="http://wue.plastikg.de/Plastic"/>
+        <rdfs:label xml:lang="en">PS-E</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://wue.plastikg.de/PSU -->
+
+    <owl:Class rdf:about="http://wue.plastikg.de/PSU">
+        <rdfs:subClassOf rdf:resource="http://wue.plastikg.de/Plastic"/>
+        <rdfs:label xml:lang="en">PSU</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://wue.plastikg.de/PTFE -->
+
+    <owl:Class rdf:about="http://wue.plastikg.de/PTFE">
+        <rdfs:subClassOf rdf:resource="http://wue.plastikg.de/Plastic"/>
+        <rdfs:label xml:lang="en">PTFE</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://wue.plastikg.de/PUR -->
+
+    <owl:Class rdf:about="http://wue.plastikg.de/PUR">
+        <rdfs:subClassOf rdf:resource="http://wue.plastikg.de/Plastic"/>
+        <rdfs:label xml:lang="en">PUR</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://wue.plastikg.de/PVC -->
+
+    <owl:Class rdf:about="http://wue.plastikg.de/PVC">
+        <rdfs:subClassOf rdf:resource="http://wue.plastikg.de/Plastic"/>
+        <rdfs:label xml:lang="en">PVC</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://wue.plastikg.de/PVDF -->
+
+    <owl:Class rdf:about="http://wue.plastikg.de/PVDF">
+        <rdfs:subClassOf rdf:resource="http://wue.plastikg.de/Plastic"/>
+        <rdfs:label xml:lang="en">PVDF</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://wue.plastikg.de/Physical_Property -->
+
+    <owl:Class rdf:about="http://wue.plastikg.de/Physical_Property">
+        <rdfs:subClassOf rdf:resource="http://wue.plastikg.de/Property"/>
+        <rdfs:label xml:lang="en">Physical_Property</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://wue.plastikg.de/Plastic -->
+
+    <owl:Class rdf:about="http://wue.plastikg.de/Plastic">
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://wue.plastikg.de/has_property"/>
+                <owl:someValuesFrom rdf:resource="http://wue.plastikg.de/Property"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://wue.plastikg.de/has_application_property"/>
+                <owl:someValuesFrom rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://wue.plastikg.de/has_formation_reaction"/>
+                <owl:someValuesFrom rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://wue.plastikg.de/has_material_name"/>
+                <owl:someValuesFrom rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://wue.plastikg.de/has_physical_property"/>
+                <owl:someValuesFrom rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://wue.plastikg.de/has_polymer_group"/>
+                <owl:someValuesFrom rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://wue.plastikg.de/has_short_synonym"/>
+                <owl:someValuesFrom rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:label xml:lang="en">Plastic</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://wue.plastikg.de/Processing_Property -->
+
+    <owl:Class rdf:about="http://wue.plastikg.de/Processing_Property">
+        <rdfs:subClassOf rdf:resource="http://wue.plastikg.de/Property"/>
+        <rdfs:label xml:lang="en">Processing_Property</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://wue.plastikg.de/Property -->
+
+    <owl:Class rdf:about="http://wue.plastikg.de/Property">
+        <rdfs:label xml:lang="en">Property</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://wue.plastikg.de/SAN -->
+
+    <owl:Class rdf:about="http://wue.plastikg.de/SAN">
+        <rdfs:subClassOf rdf:resource="http://wue.plastikg.de/Plastic"/>
+        <rdfs:label xml:lang="en">SAN</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://wue.plastikg.de/SB -->
+
+    <owl:Class rdf:about="http://wue.plastikg.de/SB">
+        <rdfs:subClassOf rdf:resource="http://wue.plastikg.de/Plastic"/>
+        <rdfs:label xml:lang="en">SB</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://wue.plastikg.de/SBR -->
+
+    <owl:Class rdf:about="http://wue.plastikg.de/SBR">
+        <rdfs:subClassOf rdf:resource="http://wue.plastikg.de/Plastic"/>
+        <rdfs:label xml:lang="en">SBR</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://wue.plastikg.de/SBS -->
+
+    <owl:Class rdf:about="http://wue.plastikg.de/SBS">
+        <rdfs:subClassOf rdf:resource="http://wue.plastikg.de/Plastic"/>
+        <rdfs:label xml:lang="en">SBS</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://wue.plastikg.de/SEBS -->
+
+    <owl:Class rdf:about="http://wue.plastikg.de/SEBS">
+        <rdfs:subClassOf rdf:resource="http://wue.plastikg.de/Plastic"/>
+        <rdfs:label xml:lang="en">SEBS</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://wue.plastikg.de/TPA -->
+
+    <owl:Class rdf:about="http://wue.plastikg.de/TPA">
+        <rdfs:subClassOf rdf:resource="http://wue.plastikg.de/Plastic"/>
+        <rdfs:label xml:lang="en">TPA</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://wue.plastikg.de/TPC -->
+
+    <owl:Class rdf:about="http://wue.plastikg.de/TPC">
+        <rdfs:subClassOf rdf:resource="http://wue.plastikg.de/Plastic"/>
+        <rdfs:label xml:lang="en">TPC</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://wue.plastikg.de/TPE -->
+
+    <owl:Class rdf:about="http://wue.plastikg.de/TPE">
+        <rdfs:subClassOf rdf:resource="http://wue.plastikg.de/Plastic"/>
+        <rdfs:label xml:lang="en">TPE</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://wue.plastikg.de/TPE-EVA -->
+
+    <owl:Class rdf:about="http://wue.plastikg.de/TPE-EVA">
+        <rdfs:subClassOf rdf:resource="http://wue.plastikg.de/Plastic"/>
+        <rdfs:label xml:lang="en">TPE-EVA</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://wue.plastikg.de/TPE-S -->
+
+    <owl:Class rdf:about="http://wue.plastikg.de/TPE-S">
+        <rdfs:subClassOf rdf:resource="http://wue.plastikg.de/Plastic"/>
+        <rdfs:label xml:lang="en">TPE-S</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://wue.plastikg.de/TPO -->
+
+    <owl:Class rdf:about="http://wue.plastikg.de/TPO">
+        <rdfs:subClassOf rdf:resource="http://wue.plastikg.de/Plastic"/>
+        <rdfs:label xml:lang="en">TPO</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://wue.plastikg.de/TPP -->
+
+    <owl:Class rdf:about="http://wue.plastikg.de/TPP">
+        <rdfs:subClassOf rdf:resource="http://wue.plastikg.de/Plastic"/>
+        <rdfs:label xml:lang="en">TPP</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://wue.plastikg.de/TPU -->
+
+    <owl:Class rdf:about="http://wue.plastikg.de/TPU">
+        <rdfs:subClassOf rdf:resource="http://wue.plastikg.de/Plastic"/>
+        <rdfs:label xml:lang="en">TPU</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://wue.plastikg.de/TPV -->
+
+    <owl:Class rdf:about="http://wue.plastikg.de/TPV">
+        <rdfs:subClassOf rdf:resource="http://wue.plastikg.de/Plastic"/>
+        <rdfs:label xml:lang="en">TPV</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://wue.plastikg.de/Thermal_Property -->
+
+    <owl:Class rdf:about="http://wue.plastikg.de/Thermal_Property">
+        <rdfs:subClassOf rdf:resource="http://wue.plastikg.de/Property"/>
+        <rdfs:label xml:lang="en">Thermal_Property</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://www.w3.org/2002/07/owl#Thing -->
+
+    <rdf:Description rdf:about="http://www.w3.org/2002/07/owl#Thing">
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://wue.plastikg.de/identifier"/>
+                <owl:someValuesFrom rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+    </rdf:Description>
+</rdf:RDF>
+
+
+
+<!-- Generated by the OWL API (version 4.5.13) https://github.com/owlcs/owlapi -->
+
