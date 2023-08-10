@@ -1,0 +1,174 @@
+@prefix : <urn:webprotege:ontology:bc3d6248-c99c-47af-8786-e6ba7ade855b#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix xml: <http://www.w3.org/XML/1998/namespace> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@base <urn:webprotege:ontology:bc3d6248-c99c-47af-8786-e6ba7ade855b> .
+
+<urn:webprotege:ontology:bc3d6248-c99c-47af-8786-e6ba7ade855b> rdf:type owl:Ontology .
+
+#################################################################
+#    Object Properties
+#################################################################
+
+###  http://wue.plastikg.de/has_property
+<http://wue.plastikg.de/has_property> rdf:type owl:ObjectProperty ;
+                                      rdfs:subPropertyOf owl:topObjectProperty ;
+                                      rdfs:domain <http://wue.plastikg.de/Plastic> ;
+                                      rdfs:range <http://wue.plastikg.de/Property> ;
+                                      rdfs:label "has_property"@en .
+
+
+#################################################################
+#    Data properties
+#################################################################
+
+###  http://wue.plastikg.de/has_application_property
+<http://wue.plastikg.de/has_application_property> rdf:type owl:DatatypeProperty ;
+                                                  rdfs:subPropertyOf owl:topDataProperty ;
+                                                  rdfs:domain <http://wue.plastikg.de/Plastic> ;
+                                                  rdfs:range xsd:string ;
+                                                  rdfs:label "has_application_property"@en .
+
+
+###  http://wue.plastikg.de/has_formation_reaction
+<http://wue.plastikg.de/has_formation_reaction> rdf:type owl:DatatypeProperty ;
+                                                rdfs:subPropertyOf owl:topDataProperty ;
+                                                rdfs:domain <http://wue.plastikg.de/Plastic> ;
+                                                rdfs:range xsd:string ;
+                                                rdfs:label "has_formation_reaction"@en .
+
+
+###  http://wue.plastikg.de/has_material_name
+<http://wue.plastikg.de/has_material_name> rdf:type owl:DatatypeProperty ;
+                                           rdfs:subPropertyOf owl:topDataProperty ;
+                                           rdfs:domain <http://wue.plastikg.de/Plastic> ;
+                                           rdfs:range xsd:string ;
+                                           rdfs:label "has_material_name"@en .
+
+
+###  http://wue.plastikg.de/has_physical_property
+<http://wue.plastikg.de/has_physical_property> rdf:type owl:DatatypeProperty ;
+                                               rdfs:subPropertyOf owl:topDataProperty ;
+                                               rdfs:domain <http://wue.plastikg.de/Plastic> ;
+                                               rdfs:range xsd:string ;
+                                               rdfs:label "has_physical_property"@en .
+
+
+###  http://wue.plastikg.de/has_polymer_group
+<http://wue.plastikg.de/has_polymer_group> rdf:type owl:DatatypeProperty ;
+                                           rdfs:subPropertyOf owl:topDataProperty ;
+                                           rdfs:domain <http://wue.plastikg.de/Plastic> ;
+                                           rdfs:range xsd:string ;
+                                           rdfs:label "has_polymer_group"@en .
+
+
+###  http://wue.plastikg.de/has_short_synonym
+<http://wue.plastikg.de/has_short_synonym> rdf:type owl:DatatypeProperty ;
+                                           rdfs:subPropertyOf owl:topDataProperty ;
+                                           rdfs:domain <http://wue.plastikg.de/Plastic> ;
+                                           rdfs:range xsd:string ;
+                                           rdfs:label "has_short_synonym"@en .
+
+
+###  http://wue.plastikg.de/identifier
+<http://wue.plastikg.de/identifier> rdf:type owl:DatatypeProperty ;
+                                    rdfs:domain <http://wue.plastikg.de/Plastic> ,
+                                                <http://wue.plastikg.de/Property> ;
+                                    rdfs:range xsd:string ;
+                                    rdfs:label "identifier"@en .
+
+
+#################################################################
+#    Classes
+#################################################################
+
+###  http://wue.plastikg.de/Aging_Property
+<http://wue.plastikg.de/Aging_Property> rdf:type owl:Class ;
+                                        rdfs:subClassOf <http://wue.plastikg.de/Property> ;
+                                        rdfs:label "Aging_Property"@en .
+
+
+###  http://wue.plastikg.de/Electric_Property
+<http://wue.plastikg.de/Electric_Property> rdf:type owl:Class ;
+                                           rdfs:subClassOf <http://wue.plastikg.de/Property> ;
+                                           rdfs:label "Electric_Property"@en .
+
+
+###  http://wue.plastikg.de/Mechanical_Property
+<http://wue.plastikg.de/Mechanical_Property> rdf:type owl:Class ;
+                                             rdfs:subClassOf <http://wue.plastikg.de/Property> ;
+                                             rdfs:label "Mechanical_Property"@en .
+
+
+###  http://wue.plastikg.de/Other_Property
+<http://wue.plastikg.de/Other_Property> rdf:type owl:Class ;
+                                        rdfs:subClassOf <http://wue.plastikg.de/Property> ;
+                                        rdfs:label "Other_Property"@en .
+
+
+###  http://wue.plastikg.de/Physical_Property
+<http://wue.plastikg.de/Physical_Property> rdf:type owl:Class ;
+                                           rdfs:subClassOf <http://wue.plastikg.de/Property> ;
+                                           rdfs:label "Physical_Property"@en .
+
+
+###  http://wue.plastikg.de/Plastic
+<http://wue.plastikg.de/Plastic> rdf:type owl:Class ;
+                                 rdfs:subClassOf [ rdf:type owl:Restriction ;
+                                                   owl:onProperty <http://wue.plastikg.de/has_property> ;
+                                                   owl:someValuesFrom <http://wue.plastikg.de/Property>
+                                                 ] ,
+                                                 [ rdf:type owl:Restriction ;
+                                                   owl:onProperty <http://wue.plastikg.de/has_application_property> ;
+                                                   owl:someValuesFrom xsd:string
+                                                 ] ,
+                                                 [ rdf:type owl:Restriction ;
+                                                   owl:onProperty <http://wue.plastikg.de/has_formation_reaction> ;
+                                                   owl:someValuesFrom xsd:string
+                                                 ] ,
+                                                 [ rdf:type owl:Restriction ;
+                                                   owl:onProperty <http://wue.plastikg.de/has_material_name> ;
+                                                   owl:someValuesFrom xsd:string
+                                                 ] ,
+                                                 [ rdf:type owl:Restriction ;
+                                                   owl:onProperty <http://wue.plastikg.de/has_physical_property> ;
+                                                   owl:someValuesFrom xsd:string
+                                                 ] ,
+                                                 [ rdf:type owl:Restriction ;
+                                                   owl:onProperty <http://wue.plastikg.de/has_polymer_group> ;
+                                                   owl:someValuesFrom xsd:string
+                                                 ] ,
+                                                 [ rdf:type owl:Restriction ;
+                                                   owl:onProperty <http://wue.plastikg.de/has_short_synonym> ;
+                                                   owl:someValuesFrom xsd:string
+                                                 ] ;
+                                 rdfs:label "Plastic"@en .
+
+
+###  http://wue.plastikg.de/Processing_Property
+<http://wue.plastikg.de/Processing_Property> rdf:type owl:Class ;
+                                             rdfs:subClassOf <http://wue.plastikg.de/Property> ;
+                                             rdfs:label "Processing_Property"@en .
+
+
+###  http://wue.plastikg.de/Property
+<http://wue.plastikg.de/Property> rdf:type owl:Class ;
+                                  rdfs:label "Property"@en .
+
+
+###  http://wue.plastikg.de/Thermal_Property
+<http://wue.plastikg.de/Thermal_Property> rdf:type owl:Class ;
+                                          rdfs:subClassOf <http://wue.plastikg.de/Property> ;
+                                          rdfs:label "Thermal_Property"@en .
+
+
+###  http://www.w3.org/2002/07/owl#Thing
+owl:Thing rdfs:subClassOf [ rdf:type owl:Restriction ;
+                            owl:onProperty <http://wue.plastikg.de/identifier> ;
+                            owl:someValuesFrom xsd:string
+                          ] .
+
+
+###  Generated by the OWL API (version 4.5.13) https://github.com/owlcs/owlapi
